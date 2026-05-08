@@ -507,6 +507,7 @@
   .btn-dark {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     background: #000;
     color: #fff;
@@ -518,6 +519,7 @@
     margin-right: 10px;
     margin-bottom: 8px;
     transition: background 0.2s;
+    text-align: center;
   }
   .btn-dark:hover { background: var(--burgundy); }
 
@@ -689,8 +691,10 @@
   /* ── Footer ── */
   .site-footer {
     background: #000000;
-    padding: 1.75rem 2.5rem;
-    text-align: center;
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .site-footer p { font-size: 12px; color: rgba(255,255,255,0.45); }
 
@@ -847,7 +851,7 @@
 
       <div class="rule"></div>
 
-      <p><strong style="font-weight:500; color:var(--burgundy);">How to Apply — Online (Recommended)</strong></p>
+      <p><strong style="font-weight:500; color:var(--burgundy);">How to Apply — Online</strong></p>
       <p>The Town uses the Gtechna parking permit portal, which launched for 2026 registrations on January 26, 2026.</p>
 
       <div class="steps-list">
@@ -893,9 +897,9 @@
       <p><strong style="font-weight:500; color:var(--burgundy);">Resources</strong></p>
 
       <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:1.5rem;">
-        <a href="https://palmbeach.gtechna.net/permit-portal/" target="_blank" class="btn-dark" style="margin:0; flex:1; min-width:180px; justify-content:flex-start;">→ Apply Online</a>
-        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:e88df42a-8d38-4987-bb89-01732cf0d6c0" target="_blank" class="btn-dark" style="margin:0; flex:1; min-width:180px; justify-content:flex-start;">→ Registration Instructions</a>
-        <a href="https://www.townofpalmbeach.com/parking" target="_blank" class="btn-dark" style="background:var(--burgundy); margin:0; flex:1; min-width:180px; justify-content:flex-start;">&#9654; Watch Step-by-Step Tutorial</a>
+        <a href="https://palmbeach.gtechna.net/permit-portal/" target="_blank" class="btn-dark" style="margin:0; flex:1; min-width:180px; ">→ Apply Online</a>
+        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:e88df42a-8d38-4987-bb89-01732cf0d6c0" target="_blank" class="btn-dark" style="margin:0; flex:1; min-width:180px; ">→ Registration Instructions</a>
+        <a href="https://www.townofpalmbeach.com/parking" target="_blank" class="btn-dark" style="background:var(--burgundy); margin:0; flex:1; min-width:180px; ">&#9654; Watch Step-by-Step Tutorial</a>
       </div>
 
       <div class="rule"></div>
@@ -956,46 +960,55 @@
     <div class="task-header">
       <div class="task-number">02</div>
       <div class="task-title-block">
-        <h2 class="task-title">Mallorca Itinerary</h2>
-        <div class="task-subtitle">10-Day Private Travel Plan — Dates, Transfers, Lodging &amp; Activities</div>
+        <h2 class="task-title">4-Day Mallorca Itinerary</h2>
+        <div class="task-subtitle">Summer 2026 — No Flights Included</div>
       </div>
     </div>
 
     <div class="content">
 
       <div class="callout" style="margin-bottom:1.5rem;">
-        <div class="callout-label">Approach</div>
-        <p>Before confirming any bookings, I'd align with the principal on travel dates, preferred lodging style (hotel vs. private villa), group size, and whether a car and driver or self-drive is preferred. All hotels, restaurants, and activities below are confirmed operational for the 2026 season and can be held provisionally while preferences are finalized.</p>
+        <div class="callout-label">Base Property</div>
+        <p>Single base for all four nights at Cap Rocat, the converted nineteenth century military fortress on the south coast. Adults only, thirty rooms, the hotel occupies the entire peninsula. The clientele tends to be discreet and deeply loyal to the property. From there, the yacht charter port at Andratx is 35 minutes, Palma is 20 minutes, and the Tramuntana mountain villages on the northwest coast are 1 hour by private car. Cap Rocat coordinates all external reservations, transfers, and yacht arrangements directly, so you'll be working with one concierge desk for the duration.</p>
+      </div>
+
+      <div class="step-block" style="margin-bottom:2rem;">
+        <div class="step-label">Four-Day Overview</div>
+        <div class="step-text">The four days are paced with intent. Day one is arrival and decompression. Day two is the sea, by private yacht. Day three is the cinematic Tramuntana, by car. Day four is Palma, then departure.</div>
       </div>
 
       <!-- Day 1 -->
       <div class="itinerary-day">
         <div class="itinerary-day-header">
           <div class="day-pill">Day 1</div>
-          <div class="day-title-text">Arrival · Palma de Mallorca</div>
+          <div class="day-title-text">Arrival · Cap Rocat</div>
         </div>
+        <p style="font-size:13.5px; color:var(--gray); margin-bottom:1rem; line-height:1.7;">Quiet arrival. Settle in. Dinner on property. Midday arrival into PMI followed by a private transfer to Cap Rocat. The afternoon is intentionally left open. The spa remains flexible throughout the day; treatments can be arranged directly through concierge as desired.</p>
         <div class="itinerary-events">
           <div class="itinerary-event">
-            <div class="event-time">Arrival</div>
+            <div class="event-time">Midday</div>
             <div class="event-content">
-              <div class="event-title">PMI Airport — Private Transfer</div>
-              <div class="event-detail">Pre-arranged private car meets at arrivals. Drive time to Palma Old Town: approximately 20 minutes.</div>
+              <div class="event-title">Arrival &amp; Check-In</div>
+              <div class="event-detail">Land at PMI. Private transfer to Cap Rocat, approximately 20 minutes. Check into suite. Welcome lunch at Sea Club, the hotel's open-air restaurant set directly on the water.</div>
               <span class="event-tag tag-transfer">Transfer</span>
+              <span class="event-tag tag-lodging" style="margin-left:4px;">Lodging</span>
+              <span class="event-tag tag-dining" style="margin-left:4px;">Dining</span>
             </div>
           </div>
           <div class="itinerary-event">
-            <div class="event-time">Check-in</div>
+            <div class="event-time">Afternoon</div>
             <div class="event-content">
-              <div class="event-title">Cap Rocat</div>
-              <div class="event-detail">Converted 19th-century military fortress on the Bay of Palma. 24 suites, private sea access, Michelin-recognized restaurant on-site. Confirmed open May–October 2026.</div>
-              <span class="event-tag tag-lodging">Lodging</span>
+              <div class="event-title">Suite Terrace · Fortress Grounds</div>
+              <div class="event-detail">Free Time on the suite terrace or walk the fortress grounds.</div>
+              <span class="event-tag tag-activity">Activity</span>
+              <span class="event-tag tag-note" style="margin-left:4px;">Optional: Spa — 90 min signature ritual</span>
             </div>
           </div>
           <div class="itinerary-event">
             <div class="event-time">Evening</div>
             <div class="event-content">
-              <div class="event-title">Dinner at Zaranda</div>
-              <div class="event-detail">Two Michelin stars. Located within the hotel. Book 8-course tasting menu at time of room reservation. Requires advance notice of dietary restrictions.</div>
+              <div class="event-title">Dinner at La Fortaleza</div>
+              <div class="event-detail">Aperitif overlooking the Bay of Palma. Dinner at La Fortaleza, the hotel's signature restaurant inside the original fortress walls. Both restaurants are on property; no transport required.</div>
               <span class="event-tag tag-dining">Dining</span>
             </div>
           </div>
@@ -1006,31 +1019,41 @@
       <div class="itinerary-day">
         <div class="itinerary-day-header">
           <div class="day-pill">Day 2</div>
-          <div class="day-title-text">Palma Old Town</div>
+          <div class="day-title-text">Private Yacht · Southwest Coast</div>
         </div>
+        <p style="font-size:13.5px; color:var(--gray); margin-bottom:1rem; line-height:1.7;">Off the road, on the water. Charter from Port d'Andratx, quiet evening back at Cap Rocat. The yacht is provisioned to preference in advance and staffed with captain and steward for the day.</p>
         <div class="itinerary-events">
           <div class="itinerary-event">
             <div class="event-time">Morning</div>
             <div class="event-content">
-              <div class="event-title">Palma Cathedral (La Seu) — Private Access Tour</div>
-              <div class="event-detail">Early entry before public opening arranged through hotel concierge. Guided by a licensed art historian. 90 minutes.</div>
-              <span class="event-tag tag-activity">Activity</span>
+              <div class="event-title">Departure to Port d'Andratx</div>
+              <div class="event-detail">Breakfast on the terrace or in-suite. Private transfer to Port d'Andratx. Board private motor yacht with captain and steward.</div>
+              <span class="event-tag tag-transfer">Transfer</span>
             </div>
           </div>
           <div class="itinerary-event">
             <div class="event-time">Midday</div>
             <div class="event-content">
-              <div class="event-title">Lunch at Marc Fosh</div>
-              <div class="event-detail">One Michelin star. Focus on seasonal Balearic produce. Reserve 3-course lunch menu. Located inside Hotel Convent de la Missió, 5 minutes on foot from the Cathedral.</div>
-              <span class="event-tag tag-dining">Dining</span>
+              <div class="event-title">Southwest Coastline — Sa Dragonera</div>
+              <div class="event-detail">Cruise southwest coastline toward Sa Dragonera, the protected island reserve off the southwest tip of Mallorca. Anchor offshore for swimming, snorkeling, paddleboarding, or simply remaining on deck. Long lunch served on board: local fish, tumbet, fruit, chilled rosé.</div>
+              <span class="event-tag tag-activity">Activity</span>
+              <span class="event-tag tag-dining" style="margin-left:4px;">Dining</span>
             </div>
           </div>
           <div class="itinerary-event">
             <div class="event-time">Afternoon</div>
             <div class="event-content">
-              <div class="event-title">Bellver Castle &amp; Palma Harbour Walk</div>
-              <div class="event-detail">Gothic circular castle with panoramic bay views. Approximately 1.5 hours. Return to hotel along the Paseo Marítimo waterfront.</div>
-              <span class="event-tag tag-activity">Activity</span>
+              <div class="event-title">Return to Cap Rocat</div>
+              <div class="event-detail">Continue through the southwest coves at leisure. Return to Cap Rocat before sunset.</div>
+              <span class="event-tag tag-transfer">Transfer</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Evening</div>
+            <div class="event-content">
+              <div class="event-title">Quiet Evening on Property</div>
+              <div class="event-detail">In-suite dinner or relaxed dinner at Sea Club.</div>
+              <span class="event-tag tag-dining">Dining</span>
             </div>
           </div>
         </div>
@@ -1040,121 +1063,77 @@
       <div class="itinerary-day">
         <div class="itinerary-day-header">
           <div class="day-pill">Day 3</div>
-          <div class="day-title-text">Tramuntana Mountains</div>
+          <div class="day-title-text">Tramuntana Coast</div>
         </div>
-        <div class="itinerary-events">
-          <div class="itinerary-event">
-            <div class="event-time">Full Day</div>
-            <div class="event-content">
-              <div class="event-title">UNESCO Serra de Tramuntana — Private Driver</div>
-              <div class="event-detail">Scenic route through Valldemossa, Deià, and Sóller. Stop at La Residencia (Deià) for lunch on the terrace. Return via the Sóller railway to Palma (vintage 1912 wooden train — book in advance).</div>
-              <span class="event-tag tag-activity">Activity</span>
-              <span class="event-tag tag-dining" style="margin-left:4px;">Dining</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Days 4-5 -->
-      <div class="itinerary-day">
-        <div class="itinerary-day-header">
-          <div class="day-pill">Days 4 – 5</div>
-          <div class="day-title-text">Northeast Coast · Cap de Formentor</div>
-        </div>
-        <div class="itinerary-events">
-          <div class="itinerary-event">
-            <div class="event-time">Day 4 AM</div>
-            <div class="event-content">
-              <div class="event-title">Transfer to Formentor Peninsula</div>
-              <div class="event-detail">Private car, approximately 1 hour 15 minutes from Palma. Note: the road to Cap de Formentor is restricted to shuttle service June–September; private vehicles permitted before 10 AM and after 7 PM.</div>
-              <span class="event-tag tag-transfer">Transfer</span>
-              <span class="event-tag tag-note" style="margin-left:4px;">Access Restriction</span>
-            </div>
-          </div>
-          <div class="itinerary-event">
-            <div class="event-time">Check-in</div>
-            <div class="event-content">
-              <div class="event-title">Hotel Formentor — A Royal Hideaway</div>
-              <div class="event-detail">Iconic 1929 property on a private pine-forested peninsula with its own beach. Fully renovated 2023. Book sea-view suite. Open April–October 2026.</div>
-              <span class="event-tag tag-lodging">Lodging</span>
-            </div>
-          </div>
-          <div class="itinerary-event">
-            <div class="event-time">Day 5</div>
-            <div class="event-content">
-              <div class="event-title">Private Sailing Charter — Pollença Bay</div>
-              <div class="event-detail">Half-day catamaran charter departing Pollença port. Includes snorkeling stop at Cala Figuera and lunch on board. Confirm 48 hours in advance; weather-dependent.</div>
-              <span class="event-tag tag-activity">Activity</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Days 6-7 -->
-      <div class="itinerary-day">
-        <div class="itinerary-day-header">
-          <div class="day-pill">Days 6 – 7</div>
-          <div class="day-title-text">Southeast Coves · Santanyí</div>
-        </div>
-        <div class="itinerary-events">
-          <div class="itinerary-event">
-            <div class="event-time">Day 6</div>
-            <div class="event-content">
-              <div class="event-title">Transfer to Santanyí — Private Villa Option</div>
-              <div class="event-detail">Southeast coast offers the most secluded coves on the island (Cala Mondragó, Cala Llombards). Private villa rental available as an alternative to hotel if group size warrants. Recommend Es Carnatge for 4+ guests.</div>
-              <span class="event-tag tag-lodging">Lodging</span>
-              <span class="event-tag tag-note" style="margin-left:4px;">Option</span>
-            </div>
-          </div>
-          <div class="itinerary-event">
-            <div class="event-time">Day 7</div>
-            <div class="event-content">
-              <div class="event-title">Coves del Drac — Private After-Hours Visit</div>
-              <div class="event-detail">One of Europe's largest underground lake systems. After-hours private access available through the hotel. Classical concert on the lake included. Porto Cristo, 30 minutes north.</div>
-              <span class="event-tag tag-activity">Activity</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Days 8-9 -->
-      <div class="itinerary-day">
-        <div class="itinerary-day-header">
-          <div class="day-pill">Days 8 – 9</div>
-          <div class="day-title-text">Return to Palma · Leisure &amp; Spa</div>
-        </div>
-        <div class="itinerary-events">
-          <div class="itinerary-event">
-            <div class="event-time">Day 8</div>
-            <div class="event-content">
-              <div class="event-title">Transfer Back to Palma — Cap Rocat</div>
-              <div class="event-detail">Return to base property for final two nights. Full-day at leisure. Spa treatments to be pre-booked; 24-hour notice required for preferred therapist.</div>
-              <span class="event-tag tag-lodging">Lodging</span>
-            </div>
-          </div>
-          <div class="itinerary-event">
-            <div class="event-time">Day 9 Eve</div>
-            <div class="event-content">
-              <div class="event-title">Farewell Dinner — Es Fum (St. Regis Mardavall)</div>
-              <div class="event-detail">Two Michelin stars. 20-minute drive from Palma. Seasonal tasting menu. Private dining room available for parties of 6 or more. Reserve 2 weeks in advance minimum.</div>
-              <span class="event-tag tag-dining">Dining</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Day 10 -->
-      <div class="itinerary-day">
-        <div class="itinerary-day-header">
-          <div class="day-pill">Day 10</div>
-          <div class="day-title-text">Departure</div>
-        </div>
+        <p style="font-size:13.5px; color:var(--gray); margin-bottom:1rem; line-height:1.7;">The west coast at its most cinematic. Long lunch, sea cliffs, dinner above the village. Late breakfast and an unhurried morning at Cap Rocat before departing with a private driver into the Serra de Tramuntana.</p>
         <div class="itinerary-events">
           <div class="itinerary-event">
             <div class="event-time">Morning</div>
             <div class="event-content">
-              <div class="event-title">Check-out &amp; Private Transfer to PMI</div>
-              <div class="event-detail">Hotel concierge coordinates luggage. Private car departs 3 hours before flight. Lounge access at PMI confirmed through hotel if needed.</div>
+              <div class="event-title">Into the Serra de Tramuntana</div>
+              <div class="event-detail">Breakfast at the hotel terrace or in-suite. Private driver into the Serra de Tramuntana. Walk the cobbled streets of Valldemossa. Continue along the coastal road toward Deià.</div>
+              <span class="event-tag tag-transfer">Transfer</span>
+              <span class="event-tag tag-activity" style="margin-left:4px;">Activity</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Midday</div>
+            <div class="event-content">
+              <div class="event-title">Sa Foradada — Lunch on the Rocks</div>
+              <div class="event-detail">Stop at Son Marroig overlooking Sa Foradada. Optional walk down to the water at Sa Foradada. Long lunch at Sa Foradada restaurant on the rocks at sea level.</div>
+              <span class="event-tag tag-activity">Activity</span>
+              <span class="event-tag tag-dining" style="margin-left:4px;">Dining</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Afternoon</div>
+            <div class="event-content">
+              <div class="event-title">Deià Village</div>
+              <div class="event-detail">Free Time to linger in Deià village or continue slowly along the coast. Drinks overlooking the cliffs before dinner.</div>
+              <span class="event-tag tag-activity">Activity</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Evening</div>
+            <div class="event-content">
+              <div class="event-title">Dinner at El Olivo — La Residencia</div>
+              <div class="event-detail">Dinner at El Olivo at La Residencia, set inside a former olive press above Deià village. Private transfer back to Cap Rocat afterward.</div>
+              <span class="event-tag tag-dining">Dining</span>
+              <span class="event-tag tag-transfer" style="margin-left:4px;">Transfer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 4 -->
+      <div class="itinerary-day">
+        <div class="itinerary-day-header">
+          <div class="day-pill">Day 4</div>
+          <div class="day-title-text">Palma · Departure</div>
+        </div>
+        <p style="font-size:13.5px; color:var(--gray); margin-bottom:1rem; line-height:1.7;">Slow final morning, long lunch in Palma, then departure. Late breakfast, final swim from the rope ladder, and time on the terrace before checkout. Luggage held by the hotel before transfer into Palma.</p>
+        <div class="itinerary-events">
+          <div class="itinerary-event">
+            <div class="event-time">Morning</div>
+            <div class="event-content">
+              <div class="event-title">Final Morning at Cap Rocat</div>
+              <div class="event-detail">Breakfast at the hotel terrace or in-suite. Free morning at Cap Rocat. Private transfer into Palma de Mallorca.</div>
+              <span class="event-tag tag-transfer">Transfer</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Midday</div>
+            <div class="event-content">
+              <div class="event-title">Long Lunch — Marc Fosh</div>
+              <div class="event-detail">Long lunch at Marc Fosh, one Michelin star, focused on seasonal Balearic produce.</div>
+              <span class="event-tag tag-dining">Dining</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Afternoon</div>
+            <div class="event-content">
+              <div class="event-title">Departure</div>
+              <div class="event-detail">Private transfer to PMI for departure.</div>
               <span class="event-tag tag-transfer">Transfer</span>
             </div>
           </div>
@@ -1163,10 +1142,12 @@
 
       <div class="rule"></div>
 
-      <div class="callout">
-        <div class="callout-label">Operational Notes</div>
-        <p>All restaurant reservations require credit card guarantee. Cap de Formentor road restrictions are enforced June through September — all site visits must be timed accordingly. I would maintain a master confirmation tracker with booking references, cancellation deadlines, and vendor contact numbers for each element of the trip, shared with the principal 72 hours before departure.</p>
+      <p><strong style="font-weight:500; color:var(--burgundy);">Experience</strong></p>
+
+      <div style="margin-bottom:1.5rem;">
+        <a href="#" class="btn-dark" style="margin:0; justify-content:center; text-align:center;">→ Mallorca Full Itinerary</a>
       </div>
+
     </div>
   </section>
 
@@ -1227,24 +1208,6 @@
         </div>
       </div>
 
-      <div style="margin-bottom:1.5rem;">
-        <div style="margin-bottom:0.75rem;">
-          <div class="day-pill" style="display:inline-block; margin-bottom:0.5rem;">Why Microsoft Forms</div>
-          <div class="day-title-text">The Case for Owl Capital</div>
-        </div>
-        <p style="font-size:14px; line-height:1.75; color:#000000;">The survey is intended to run fully inside the existing Microsoft 365 environment, which makes Microsoft Forms and Power Automate the most natural fit. This stack minimizes additional vendors and permissions, keeps data within the firm's tenant, and leverages tools the team already uses daily — while still delivering an automated, one-page PDF summary workflow that can be extended or maintained easily over time.</p>
-      </div>
-
-      <div class="rule"></div>
-
-      <p><strong style="font-weight:500; color:var(--burgundy);">Experience</strong></p>
-
-      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:1.5rem;">
-        <a href="#" class="btn-dark" style="margin:0; flex:1; min-width:160px; justify-content:flex-start;">→ Online Survey</a>
-        <a href="#" class="btn-dark" style="margin:0; flex:1; min-width:160px; justify-content:flex-start;">→ Process Workflow</a>
-        <a href="#" class="btn-dark" style="background:var(--burgundy); margin:0; flex:1; min-width:160px; justify-content:flex-start;">&#9654; Watch Workflow Walkthrough</a>
-      </div>
-
       <div class="rule"></div>
 
       <p><strong style="font-weight:500; color:var(--burgundy);">Other Viable Survey &amp; Automation Stacks</strong></p>
@@ -1270,8 +1233,25 @@
         </div>
       </div>
 
+      <div style="margin-bottom:1.5rem;">
+        <div style="margin-bottom:0.75rem;">
+          <div class="day-pill" style="display:inline-block; margin-bottom:0.5rem;">Why Microsoft Forms</div>
+          <div class="day-title-text">The Case for Owl Capital</div>
+        </div>
+        <p style="font-size:14px; line-height:1.75; color:#000000;">The survey is intended to run fully inside the existing Microsoft 365 environment, which makes Microsoft Forms and Power Automate the most natural fit. This stack minimizes additional vendors and permissions, keeps data within the firm's tenant, and leverages tools the team already uses daily, while still delivering an automated, one-page PDF summary workflow that can be extended or maintained easily over time.</p>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Experience</strong></p>
+
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:1.5rem;">
+        <a href="#" class="btn-dark" style="margin:0; flex:1; min-width:160px; ">→ Online Survey</a>
+        <a href="#" class="btn-dark" style="margin:0; flex:1; min-width:160px; ">→ Process Workflow</a>
+        <a href="#" class="btn-dark" style="background:var(--burgundy); margin:0; flex:1; min-width:160px; ">&#9654; Watch Workflow Walkthrough</a>
+      </div>
+
     </div>
-  </section>
   </section>
 
   <!-- ══ TASK 04 ══ -->
@@ -1279,8 +1259,8 @@
     <div class="task-header">
       <div class="task-number">04</div>
       <div class="task-title-block">
-        <h2 class="task-title">Outlook Contacts</h2>
-        <div class="task-subtitle">Contact Consolidation — PowerShell Detection + Excel Merge + Outlook Import</div>
+        <h2 class="task-title">Consolidating Outlook Contacts</h2>
+        <div class="task-subtitle">Multiple Lists, 1,000+ Contacts Each — No Duplicates</div>
       </div>
     </div>
 
@@ -1305,7 +1285,7 @@
           <div class="step-num">1</div>
           <div class="step-content">
             <strong>Outlook Export</strong>
-            <p>Export the full contacts list from Outlook via File → Open &amp; Export → Import/Export → Export to a file → Comma Separated Values. This is the raw source — untouched.</p>
+            <p>Export the full contacts list from Outlook via File → Open &amp; Export → Import/Export → Export to a file → Comma Separated Values. This is the raw source, untouched.</p>
           </div>
         </div>
         <div class="step-item">
@@ -1319,14 +1299,14 @@
           <div class="step-num">3</div>
           <div class="step-content">
             <strong>PowerShell Duplicate Detection</strong>
-            <p>New Outlook may automatically hide exact or subset duplicates, but this process does not rely on hidden duplicate behavior. The full export is reviewed and consolidated before re-import. Run a PowerShell script to normalize name and email fields, flag likely duplicates based on matching criteria, and output a structured report. No records are modified at this stage.</p>
+            <p>Run a PowerShell script to normalize name and email fields, flag likely duplicates based on matching criteria, and output a structured report. No records are modified at this stage.</p>
           </div>
         </div>
         <div class="step-item">
           <div class="step-num">4</div>
           <div class="step-content">
             <strong>Duplicate_Report.csv — Reference Only</strong>
-            <p>Review the flagged groups. This file is for review only — no edits are made here. Each flagged group is assessed to confirm whether it's a true duplicate or a legitimate separate contact.</p>
+            <p>Review the flagged groups. This file is for review only, no edits are made here. Each flagged group is assessed to confirm whether it's a true duplicate or a legitimate separate contact.</p>
           </div>
         </div>
         <div class="step-item">
@@ -1347,7 +1327,7 @@
           <div class="step-num">7</div>
           <div class="step-content">
             <strong>Contacts_CLEAN.csv</strong>
-            <p>Export the finalized dataset as a clean CSV — formatted and mapped to Outlook's import field schema. This is the only file that touches Outlook on re-import.</p>
+            <p>Export the finalized dataset as a clean CSV, formatted and mapped to Outlook's import field schema. This is the only file that touches Outlook on re-import.</p>
           </div>
         </div>
         <div class="step-item">
@@ -1359,12 +1339,20 @@
         </div>
       </div>
 
+      <div style="margin-bottom:1.5rem;">
+        <div style="margin-bottom:0.75rem;">
+          <div class="day-pill" style="display:inline-block; margin-bottom:0.5rem;">Note</div>
+          <div class="day-title-text">On Outlook Duplicate Behavior</div>
+        </div>
+        <p style="font-size:14px; line-height:1.75; color:#000000;">New Outlook may automatically hide exact or subset duplicates, but this process does not rely on hidden duplicate behavior. The full export is reviewed and consolidated before re-import.</p>
+      </div>
+
       <div class="rule"></div>
 
       <p><strong style="font-weight:500; color:var(--burgundy);">Experience</strong></p>
 
       <div style="margin-bottom:1.5rem;">
-        <a href="#" class="btn-dark" style="margin:0; justify-content:flex-start;">→ Process Workflow</a>
+        <a href="#" class="btn-dark" style="margin:0; ">→ Process Workflow</a>
       </div>
 
     </div>
@@ -1376,7 +1364,10 @@
      FOOTER
 ══════════════════════════════ -->
 <footer class="site-footer">
-  <p>Paola Corrales &nbsp;·&nbsp; Assessment Exercise &nbsp;·&nbsp; Mahler Private Staffing &nbsp;·&nbsp; May 2026</p>
+  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.75rem; width:100%; text-align:center;">
+    <img src="data:image/png;base64,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" alt="Paola Corrales" style="width:64px; height:64px; border-radius:50%; object-fit:cover;">
+    <p style="font-family:'Cormorant Garamond', serif; font-size:18px; font-weight:500; color:var(--tan); letter-spacing:0.08em;">Paola Corrales</p>
+  </div>
 </footer>
 
 <script>
