@@ -1,2 +1,1392 @@
-# index.html
-Test Page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview Assignment — Paola Corrales</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --burgundy: #710000;
+    --burgundy-light: #710000;
+    --tan: #B3A188;
+    --tan-light: #cfc4b2;
+    --cream: #F7EDE1;
+    --cream-dark: #ede0d0;
+    --black: #000000;
+    --gray: #6b6b6b;
+    --gray-light: #e8e2d9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #ffffff;
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    background: #000000;
+    padding: 3rem 0 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--tan);
+  }
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+  .header-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 0.75rem;
+  }
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .header-meta {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .header-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* ── Nav ── */
+  .task-nav {
+    background: #fff;
+    border-bottom: 1px solid var(--gray-light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+  }
+  .nav-item {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--gray);
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .nav-item:hover { color: var(--burgundy); border-bottom-color: var(--tan); }
+  .nav-item.active { color: var(--burgundy); border-bottom-color: var(--burgundy); }
+
+  /* ── Main ── */
+  .main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2.5rem 5rem;
+  }
+
+  /* ── Task Section ── */
+  .task-section {
+    padding: 3.5rem 0 3rem;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .task-section:last-child { border-bottom: none; }
+
+  .task-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .task-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--tan);
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: -4px;
+  }
+  .task-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--burgundy);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .task-subtitle {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tan);
+  }
+
+  /* ── Content ── */
+  .content p {
+    margin-bottom: 1rem;
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  .content p:last-child { margin-bottom: 0; }
+
+  /* ── Step Block ── */
+  .step-block {
+    background: #fff;
+    border: 1px solid var(--gray-light);
+    border-left: 3px solid var(--burgundy);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .step-block:last-child { margin-bottom: 0; }
+  .step-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 0.4rem;
+  }
+  .step-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--black);
+  }
+
+  /* ── Day Grid ── */
+  .day-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 0.5rem;
+  }
+  .day-card {
+    background: #fff;
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .day-card-header {
+    background: var(--burgundy);
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .day-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--tan);
+  }
+  .day-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #fff;
+  }
+  .day-card-body { padding: 1.25rem; }
+  .day-card-body p { font-size: 13.5px; line-height: 1.7; color: var(--black); }
+  .day-card-body p + p { margin-top: 0.6rem; }
+  .day-card-body ul { padding-left: 0; list-style: none; }
+  .day-card-body ul li {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--black);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--gray-light);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .day-card-body ul li:last-child { border-bottom: none; }
+  .time-tag {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    background: var(--cream);
+    border-radius: 3px;
+    padding: 2px 7px;
+    margin-bottom: 4px;
+    flex-shrink: 0;
+  }
+
+  /* ── Numbered Steps ── */
+  .steps-list { counter-reset: steps; }
+  .step-item {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+  }
+  .step-item:last-child { margin-bottom: 0; }
+  .step-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--burgundy);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content strong {
+    font-weight: 500;
+    color: var(--burgundy);
+    display: block;
+    margin-bottom: 3px;
+    font-size: 14px;
+  }
+  .step-content p { font-size: 14px; line-height: 1.65; color: #000000; margin: 0; }
+
+  /* ── Table ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin-bottom: 1rem;
+  }
+  .data-table thead tr { background: var(--burgundy); color: #fff; }
+  .data-table thead th { padding: 10px 12px; text-align: left; font-weight: 500; }
+  .data-table tbody tr:nth-child(even) { background: var(--cream); }
+  .data-table tbody tr:nth-child(odd) { background: #fff; border-bottom: 1px solid var(--gray-light); }
+  .data-table tbody td { padding: 10px 12px; }
+  .data-table tbody tr:nth-child(even) td { color: var(--black); }
+  .data-table tbody tr:nth-child(odd) td { color: var(--black); }
+  .data-table tbody td:first-child { font-weight: 500; }
+
+  /* ── Info Box ── */
+  .info-box {
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .info-box-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 0.5rem;
+  }
+  .info-box p { font-size: 14px; line-height: 1.7; color: var(--black); margin: 0; }
+
+  /* ── Survey ── */
+  .survey-question {
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+  .survey-q-header {
+    background: var(--cream);
+    padding: 0.9rem 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .survey-q-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--burgundy);
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .survey-q-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.5;
+  }
+  .survey-q-type {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 3px;
+  }
+  .survey-q-body {
+    padding: 1rem 1.25rem 1rem 1.25rem;
+    background: #fff;
+  }
+  .survey-options { display: flex; flex-direction: column; gap: 8px; }
+  .survey-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13.5px;
+    color: var(--black);
+  }
+  .survey-radio {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--tan);
+    flex-shrink: 0;
+  }
+  .survey-checkbox {
+    width: 16px; height: 16px;
+    border-radius: 3px;
+    border: 2px solid var(--tan);
+    flex-shrink: 0;
+  }
+  .survey-textarea {
+    width: 100%;
+    min-height: 70px;
+    border: 1px solid var(--gray-light);
+    border-radius: 5px;
+    padding: 10px 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    color: var(--gray);
+    background: #fafafa;
+    resize: vertical;
+  }
+  .survey-scale {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .scale-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .scale-circle {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 2px solid var(--gray-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--gray);
+    cursor: pointer;
+  }
+  .scale-label { font-size: 10px; color: var(--gray); text-align: center; }
+
+  /* ── Permit Cards ── */
+  .permit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 1rem;
+  }
+  .permit-card {
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .permit-card-header {
+    background: var(--burgundy);
+    padding: 0.75rem 1.25rem;
+  }
+  .permit-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.25;
+  }
+  .permit-card-body { padding: 1rem 1.25rem; background: #fff; }
+  .permit-meta-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 3px;
+  }
+  .permit-meta-text {
+    font-size: 13px;
+    color: var(--black);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+  .permit-cost {
+    display: inline-block;
+    background: var(--cream);
+    border-radius: 4px;
+    padding: 3px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--burgundy);
+    margin-bottom: 0.75rem;
+  }
+  @media (max-width: 640px) {
+    .permit-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── Doc Rows ── */
+  .doc-row {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--gray-light);
+    align-items: flex-start;
+  }
+  .doc-row:last-child { border-bottom: none; }
+  .doc-tag-col { width: 150px; flex-shrink: 0; padding-top: 2px; }
+  .doc-req { font-size: 11px; color: var(--gray); margin-top: 4px; }
+  .doc-content { flex: 1; font-size: 14px; line-height: 1.7; color: var(--black); }
+
+  /* ── Phase Label ── */
+  .phase-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--burgundy);
+    margin-bottom: 0.85rem;
+    line-height: 1.2;
+  }
+  .two-col-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 640px) {
+    .two-col-content { grid-template-columns: 1fr; }
+  }
+
+  /* ── Divider ── */
+  .rule { height: 1px; background: var(--tan-light); margin: 1.75rem 0; }
+
+  /* ── Buttons ── */
+  .btn-dark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-right: 10px;
+    margin-bottom: 8px;
+    transition: background 0.2s;
+    text-align: center;
+  }
+  .btn-dark:hover { background: var(--burgundy); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--burgundy);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid var(--burgundy);
+    margin-right: 10px;
+    margin-bottom: 8px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { background: var(--burgundy); color: #fff; }
+
+  /* ── Note Tag ── */
+  .note-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #fff8f0;
+    border: 1px solid #e8c99a;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #8a5a00;
+    margin-bottom: 1.25rem;
+  }
+  .note-dot { width: 7px; height: 7px; border-radius: 50%; background: #e09a30; }
+
+  /* ── Checklist ── */
+  .check-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.5rem; }
+  .check-item { display: flex; align-items: flex-start; gap: 10px; }
+  .check-item span { font-size: 14px; color: var(--black); line-height: 1.6; }
+  .check-item .sub { color: var(--gray); font-size: 13px; }
+
+  /* ── Contact Block ── */
+  .contact-block {
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .contact-item .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray); margin-bottom: 3px; font-weight: 500; }
+  .contact-item a { color: var(--burgundy); text-decoration: none; font-size: 13px; }
+  .contact-item p { font-size: 13px; }
+
+  /* ── Two-col grid ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* ── Callout ── */
+  .callout {
+    background: #000;
+    color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .callout-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 0.5rem;
+  }
+  .callout p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.85); margin: 0; }
+
+  /* ── Itinerary timeline ── */
+  .itinerary-day {
+    margin-bottom: 2rem;
+  }
+  .itinerary-day-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .day-pill {
+    background: var(--burgundy);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .day-title-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--burgundy);
+  }
+  .itinerary-events { display: flex; flex-direction: column; gap: 0; }
+  .itinerary-event {
+    display: flex;
+    gap: 1.25rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .itinerary-event:last-child { border-bottom: none; }
+  .event-time {
+    width: 70px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--burgundy);
+    letter-spacing: 0.04em;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+  .event-content { flex: 1; }
+  .event-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 2px;
+  }
+  .event-detail {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+  .event-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 3px;
+    padding: 2px 6px;
+    margin-top: 4px;
+  }
+  .tag-transfer { background: #f0f0f0; color: #555; }
+  .tag-lodging  { background: #f7eee1; color: #8a5a00; }
+  .tag-dining   { background: #f7e1e1; color: #710000; }
+  .tag-activity { background: #e1f0e8; color: #1a6b3a; }
+  .tag-note     { background: #e8eaf6; color: #3949ab; }
+
+  /* ── Contacts table ── */
+  .contacts-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin-bottom: 1rem;
+  }
+  .contacts-table thead tr { background: var(--burgundy); color: #fff; }
+  .contacts-table thead th { padding: 10px 12px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.04em; }
+  .contacts-table tbody tr { border-bottom: 1px solid var(--gray-light); }
+  .contacts-table tbody tr:last-child { border-bottom: none; }
+  .contacts-table tbody td { padding: 10px 12px; vertical-align: top; }
+  .contacts-table tbody td:first-child { font-weight: 500; color: var(--black); }
+  .contact-name { font-weight: 500; color: var(--black); font-size: 13.5px; }
+  .contact-org  { font-size: 12px; color: var(--gray); margin-top: 2px; }
+  .contact-email { font-size: 12.5px; color: var(--burgundy); }
+  .contact-phone { font-size: 12.5px; color: var(--gray); }
+
+  /* ── Footer ── */
+  .site-footer {
+    background: #000000;
+    padding: 1.75rem 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .site-footer p { font-size: 12px; color: rgba(255,255,255,0.45); }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .day-grid { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .header-title { font-size: 30px; }
+    .nav-item { padding: 0.875rem 0.75rem; font-size: 11px; }
+    .header-meta { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     HEADER
+══════════════════════════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-label">Mahler Private Staffing</div>
+    <h1 class="header-title">Assessment Exercise</h1>
+    <div class="header-meta">
+      <span>Prepared by: Paola Corrales</span>
+      <span>Submitted: Friday, May 8, 2026</span>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════
+     NAV
+══════════════════════════════ -->
+<nav class="task-nav">
+  <div class="nav-inner">
+    <a href="#task1" class="nav-item active">01 &nbsp;Parking Permits</a>
+    <a href="#task2" class="nav-item">02 &nbsp;Mallorca Itinerary</a>
+    <a href="#task3" class="nav-item">03 &nbsp;Online Survey</a>
+    <a href="#task4" class="nav-item">04 &nbsp;Outlook Contacts</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════
+     MAIN
+══════════════════════════════ -->
+<main class="main">
+
+  <!-- ══ TASK 01 ══ -->
+  <section class="task-section" id="task1">
+    <div class="task-header">
+      <div class="task-number">01</div>
+      <div class="task-title-block">
+        <h2 class="task-title">Palm Beach Parking Permits 2026</h2>
+        <div class="task-subtitle">Town of Palm Beach — Permit Types, Costs &amp; Application Process</div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="callout" style="margin-bottom:1.5rem;">
+        <div class="callout-label">Approach</div>
+        <p>Before beginning any application, I would confirm with the principal: the property address on the island (determines eligibility: RPP vs. PPP); the number of vehicles that need permits (maximum 2 per household); whether visitor hangtags are needed and for how many guests (up to 4 per RPP household); and any commercial or staff vehicles that may require a Parking Placard Permit. This prevents wasted effort and ensures the right permit type is applied for from the start.</p>
+      </div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Permit Types &amp; Costs</strong></p>
+
+      <div class="permit-grid">
+
+        <div class="permit-card">
+          <div class="permit-card-header">
+            <div class="permit-card-name">Resident Parking Permit (RPP)</div>
+          </div>
+          <div class="permit-card-body">
+            <div class="permit-meta-label">Who It's For</div>
+            <div class="permit-meta-text">Residents on qualifying street blocks</div>
+            <div class="permit-cost">$50 / vehicle</div>
+            <div class="permit-meta-label">Key Benefit</div>
+            <div class="permit-meta-text" style="margin-bottom:0;">Park on your designated block; up to 48 hrs</div>
+          </div>
+        </div>
+
+        <div class="permit-card">
+          <div class="permit-card-header">
+            <div class="permit-card-name">ParkMobile Parking Permit (PPP)</div>
+          </div>
+          <div class="permit-card-body">
+            <div class="permit-meta-label">Who It's For</div>
+            <div class="permit-meta-text">All Town residents</div>
+            <div class="permit-cost">$50 / vehicle</div>
+            <div class="permit-meta-label">Key Benefit</div>
+            <div class="permit-meta-text" style="margin-bottom:0;">2 free hours in any ParkMobile zone town-wide</div>
+          </div>
+        </div>
+
+        <div class="permit-card">
+          <div class="permit-card-header">
+            <div class="permit-card-name">RPP Visitor Hangtag</div>
+          </div>
+          <div class="permit-card-body">
+            <div class="permit-meta-label">Who It's For</div>
+            <div class="permit-meta-text">Guests of RPP-eligible residents</div>
+            <div class="permit-cost">$50 / hangtag</div>
+            <div class="permit-meta-label">Key Benefit</div>
+            <div class="permit-meta-text" style="margin-bottom:0;">Park on resident's RPP block; up to 4 per household</div>
+          </div>
+        </div>
+
+        <div class="permit-card">
+          <div class="permit-card-header">
+            <div class="permit-card-name">Parking Placard Permit</div>
+          </div>
+          <div class="permit-card-body">
+            <div class="permit-meta-label">Who It's For</div>
+            <div class="permit-meta-text">Employers / commercial users</div>
+            <div class="permit-cost">$165 / mo &nbsp;·&nbsp; $554 / 4 mo &nbsp;·&nbsp; $1,454 / yr</div>
+            <div class="permit-meta-label">Key Benefit</div>
+            <div class="permit-meta-text" style="margin-bottom:0;">Unlimited parking in designated commercial areas; waitlist may apply</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="step-block">
+        <div class="step-label">Key Rules</div>
+        <div class="step-text">Maximum of 2 permits per household for both RPP and PPP. All resident permits are valid through December 31, 2026. RPP residents may add PPP for an additional $50, or purchase PPP on its own.</div>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Documents to Gather Before Applying</strong></p>
+
+      <div style="margin-bottom:1.5rem;">
+        <div class="doc-row">
+          <div class="doc-tag-col">
+            <span class="time-tag">Proof of Residency</span>
+            <div class="doc-req">One required</div>
+          </div>
+          <div class="doc-content">Current utility bill; court-registered mortgage document, deed, condominium contract, or trust document; current Florida ID or Driver's License showing Town address; or current lease agreement (must include landlord's name and contact number). Note: hotels and short-term rentals under 12 months are not eligible.</div>
+        </div>
+        <div class="doc-row">
+          <div class="doc-tag-col">
+            <span class="time-tag">Vehicle Information</span>
+            <div class="doc-req">All required</div>
+          </div>
+          <div class="doc-content">Make and model; license plate number (vehicle does not need a Florida plate).</div>
+        </div>
+        <div class="doc-row">
+          <div class="doc-tag-col">
+            <span class="time-tag">Vehicle Document</span>
+            <div class="doc-req">One required</div>
+          </div>
+          <div class="doc-content">Car registration, insurance card, or rental contract.</div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">How to Apply — Online</strong></p>
+      <p>The Town uses the Gtechna parking permit portal, which launched for 2026 registrations on January 26, 2026.</p>
+
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>Create an account</strong>
+            <p>Navigate to the <a href="https://palmbeach.gtechna.net/permit-portal/" target="_blank" style="color:var(--burgundy);">Palm Beach Permit Portal</a>, click "Sign Up" in the top right. The system automatically determines your eligibility (RPP or PPP) based on your address.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>Register your vehicle</strong>
+            <p>Click "Add Permit," then "Add Vehicle," enter vehicle details, and upload your Vehicle Registration and Proof of Residency.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>Select your permit type</strong>
+            <p>RPP residents: location defaults to your block. PPP residents: select "Townwide ParkMobile Parking Permit" from the dropdown.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>Add visitor hangtags (optional — RPP residents only)</strong>
+            <p>Click "Add Permit," then "Add Vehicle," toggle "Is this a visitor vehicle?" to Yes. Use format: VIS + last 5 digits of your phone number + permit number (e.g., VIS434561).</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <strong>Pay and submit</strong>
+            <p>Click "Add Credit Card," enter card details, accept terms, and click "Buy." Your card is not charged until the application is approved. Confirmation arrives by email.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Resources</strong></p>
+
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:1.5rem;">
+        <a href="https://palmbeach.gtechna.net/permit-portal/" target="_blank" class="btn-dark" style="margin:0; flex:1; min-width:180px; ">→ Apply Online</a>
+        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:VA6C2:e88df42a-8d38-4987-bb89-01732cf0d6c0" target="_blank" class="btn-dark" style="margin:0; flex:1; min-width:180px; ">→ Registration Instructions</a>
+        <a href="https://www.townofpalmbeach.com/parking" target="_blank" class="btn-dark" style="background:var(--burgundy); margin:0; flex:1; min-width:180px; ">&#9654; Watch Step-by-Step Tutorial</a>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">In-Person Alternative</strong></p>
+      <p style="margin-bottom:1.5rem;">Applications can also be submitted in person at Town Hall. Bring all documents listed above. Staff will process on-site and issue the permit same day in most cases.</p>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Important Details</strong></p>
+
+      <div style="border: 1px solid var(--gray-light); border-radius: 6px; overflow: hidden; margin-bottom: 1.75rem;">
+        <div style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-light); font-size:14px; line-height:1.7; color:var(--black);">A credit card is required to complete your application, but payment will only be processed once your application is approved.</div>
+        <div style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-light); font-size:14px; line-height:1.7; color:var(--black);">Approved permits will be confirmed via email.</div>
+        <div style="padding: 1rem 1.5rem; font-size:14px; line-height:1.7; color:var(--black);">We're here to help! If you are having issues, please fill out the <a href="https://www.townofpalmbeach.com/contact" target="_blank" style="color:var(--burgundy);">contact form</a>.</div>
+      </div>
+
+      <div style="background:var(--cream); border-radius:6px; padding:1.25rem 1.5rem;">
+        <div style="display:flex; gap:2.5rem; flex-wrap:wrap; padding-bottom:1rem; margin-bottom:1rem; border-bottom:1px solid var(--tan-light);">
+          <div>
+            <div style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); margin-bottom:5px;">Parking Services</div>
+            <div style="font-size:13px; color:var(--black);">(561) 838-5400</div>
+          </div>
+          <div>
+            <div style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); margin-bottom:5px;">Email</div>
+            <a href="mailto:parking@townofpalmbeach.com" style="font-size:13px; color:var(--burgundy); text-decoration:none;">parking@townofpalmbeach.com</a>
+          </div>
+          <div>
+            <div style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); margin-bottom:5px;">Town Hall Address</div>
+            <div style="font-size:13px; color:var(--black);">360 S. County Rd, Palm Beach, FL 33480</div>
+          </div>
+          <div>
+            <div style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); margin-bottom:5px;">Hours</div>
+            <div style="font-size:13px; color:var(--black);">Mon – Fri, 8:30 AM – 5:00 PM</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:2.5rem; flex-wrap:wrap;">
+          <div>
+            <div style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); margin-bottom:5px;">Permit Program Questions</div>
+            <div style="font-size:13px; color:var(--black); margin-bottom:3px;">(561) 838-5400</div>
+            <a href="mailto:webinfo@townofpalmbeach.com" style="font-size:13px; color:var(--burgundy); text-decoration:none;">webinfo@townofpalmbeach.com</a>
+          </div>
+          <div>
+            <div style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); margin-bottom:5px;">Enforcement / Citations</div>
+            <div style="font-size:13px; color:var(--black);">(561) 227-7080</div>
+          </div>
+          <div>
+            <div style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); margin-bottom:5px;">Parking Placard (Commercial)</div>
+            <div style="font-size:13px; color:var(--black); margin-bottom:3px;">(561) 227-6334</div>
+            <a href="mailto:rmalek@townofpalmbeach.com" style="font-size:13px; color:var(--burgundy); text-decoration:none;">rmalek@townofpalmbeach.com</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ TASK 02 ══ -->
+  <section class="task-section" id="task2">
+    <div class="task-header">
+      <div class="task-number">02</div>
+      <div class="task-title-block">
+        <h2 class="task-title">4-Day Mallorca Itinerary</h2>
+        <div class="task-subtitle">Summer 2026 — No Flights Included</div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="callout" style="margin-bottom:1.5rem;">
+        <div class="callout-label">Base Property</div>
+        <p>Single base for all four nights at Cap Rocat, the converted nineteenth century military fortress on the south coast. Adults only, thirty rooms, the hotel occupies the entire peninsula. The clientele tends to be discreet and deeply loyal to the property. From there, the yacht charter port at Andratx is 35 minutes, Palma is 20 minutes, and the Tramuntana mountain villages on the northwest coast are 1 hour by private car. Cap Rocat coordinates all external reservations, transfers, and yacht arrangements directly, so you'll be working with one concierge desk for the duration.</p>
+      </div>
+
+      <div class="step-block" style="margin-bottom:2rem;">
+        <div class="step-label">Four-Day Overview</div>
+        <div class="step-text">The four days are paced with intent. Day one is arrival and decompression. Day two is the sea, by private yacht. Day three is the cinematic Tramuntana, by car. Day four is Palma, then departure.</div>
+      </div>
+
+      <!-- Day 1 -->
+      <div class="itinerary-day">
+        <div class="itinerary-day-header">
+          <div class="day-pill">Day 1</div>
+          <div class="day-title-text">Arrival · Cap Rocat</div>
+        </div>
+        <p style="font-size:13.5px; color:var(--gray); margin-bottom:1rem; line-height:1.7;">Quiet arrival. Settle in. Dinner on property. Midday arrival into PMI followed by a private transfer to Cap Rocat. The afternoon is intentionally left open. The spa remains flexible throughout the day; treatments can be arranged directly through concierge as desired.</p>
+        <div class="itinerary-events">
+          <div class="itinerary-event">
+            <div class="event-time">Midday</div>
+            <div class="event-content">
+              <div class="event-title">Arrival &amp; Check-In</div>
+              <div class="event-detail">Land at PMI. Private transfer to Cap Rocat, approximately 20 minutes. Check into suite. Welcome lunch at Sea Club, the hotel's open-air restaurant set directly on the water.</div>
+              <span class="event-tag tag-transfer">Transfer</span>
+              <span class="event-tag tag-lodging" style="margin-left:4px;">Lodging</span>
+              <span class="event-tag tag-dining" style="margin-left:4px;">Dining</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Afternoon</div>
+            <div class="event-content">
+              <div class="event-title">Suite Terrace · Fortress Grounds</div>
+              <div class="event-detail">Free Time on the suite terrace or walk the fortress grounds.</div>
+              <span class="event-tag tag-activity">Activity</span>
+              <span class="event-tag tag-note" style="margin-left:4px;">Optional: Spa — 90 min signature ritual</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Evening</div>
+            <div class="event-content">
+              <div class="event-title">Dinner at La Fortaleza</div>
+              <div class="event-detail">Aperitif overlooking the Bay of Palma. Dinner at La Fortaleza, the hotel's signature restaurant inside the original fortress walls. Both restaurants are on property; no transport required.</div>
+              <span class="event-tag tag-dining">Dining</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="itinerary-day">
+        <div class="itinerary-day-header">
+          <div class="day-pill">Day 2</div>
+          <div class="day-title-text">Private Yacht · Southwest Coast</div>
+        </div>
+        <p style="font-size:13.5px; color:var(--gray); margin-bottom:1rem; line-height:1.7;">Off the road, on the water. Charter from Port d'Andratx, quiet evening back at Cap Rocat. The yacht is provisioned to preference in advance and staffed with captain and steward for the day.</p>
+        <div class="itinerary-events">
+          <div class="itinerary-event">
+            <div class="event-time">Morning</div>
+            <div class="event-content">
+              <div class="event-title">Departure to Port d'Andratx</div>
+              <div class="event-detail">Breakfast on the terrace or in-suite. Private transfer to Port d'Andratx. Board private motor yacht with captain and steward.</div>
+              <span class="event-tag tag-transfer">Transfer</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Midday</div>
+            <div class="event-content">
+              <div class="event-title">Southwest Coastline — Sa Dragonera</div>
+              <div class="event-detail">Cruise southwest coastline toward Sa Dragonera, the protected island reserve off the southwest tip of Mallorca. Anchor offshore for swimming, snorkeling, paddleboarding, or simply remaining on deck. Long lunch served on board: local fish, tumbet, fruit, chilled rosé.</div>
+              <span class="event-tag tag-activity">Activity</span>
+              <span class="event-tag tag-dining" style="margin-left:4px;">Dining</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Afternoon</div>
+            <div class="event-content">
+              <div class="event-title">Return to Cap Rocat</div>
+              <div class="event-detail">Continue through the southwest coves at leisure. Return to Cap Rocat before sunset.</div>
+              <span class="event-tag tag-transfer">Transfer</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Evening</div>
+            <div class="event-content">
+              <div class="event-title">Quiet Evening on Property</div>
+              <div class="event-detail">In-suite dinner or relaxed dinner at Sea Club.</div>
+              <span class="event-tag tag-dining">Dining</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="itinerary-day">
+        <div class="itinerary-day-header">
+          <div class="day-pill">Day 3</div>
+          <div class="day-title-text">Tramuntana Coast</div>
+        </div>
+        <p style="font-size:13.5px; color:var(--gray); margin-bottom:1rem; line-height:1.7;">The west coast at its most cinematic. Long lunch, sea cliffs, dinner above the village. Late breakfast and an unhurried morning at Cap Rocat before departing with a private driver into the Serra de Tramuntana.</p>
+        <div class="itinerary-events">
+          <div class="itinerary-event">
+            <div class="event-time">Morning</div>
+            <div class="event-content">
+              <div class="event-title">Into the Serra de Tramuntana</div>
+              <div class="event-detail">Breakfast at the hotel terrace or in-suite. Private driver into the Serra de Tramuntana. Walk the cobbled streets of Valldemossa. Continue along the coastal road toward Deià.</div>
+              <span class="event-tag tag-transfer">Transfer</span>
+              <span class="event-tag tag-activity" style="margin-left:4px;">Activity</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Midday</div>
+            <div class="event-content">
+              <div class="event-title">Sa Foradada — Lunch on the Rocks</div>
+              <div class="event-detail">Stop at Son Marroig overlooking Sa Foradada. Optional walk down to the water at Sa Foradada. Long lunch at Sa Foradada restaurant on the rocks at sea level.</div>
+              <span class="event-tag tag-activity">Activity</span>
+              <span class="event-tag tag-dining" style="margin-left:4px;">Dining</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Afternoon</div>
+            <div class="event-content">
+              <div class="event-title">Deià Village</div>
+              <div class="event-detail">Free Time to linger in Deià village or continue slowly along the coast. Drinks overlooking the cliffs before dinner.</div>
+              <span class="event-tag tag-activity">Activity</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Evening</div>
+            <div class="event-content">
+              <div class="event-title">Dinner at El Olivo — La Residencia</div>
+              <div class="event-detail">Dinner at El Olivo at La Residencia, set inside a former olive press above Deià village. Private transfer back to Cap Rocat afterward.</div>
+              <span class="event-tag tag-dining">Dining</span>
+              <span class="event-tag tag-transfer" style="margin-left:4px;">Transfer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 4 -->
+      <div class="itinerary-day">
+        <div class="itinerary-day-header">
+          <div class="day-pill">Day 4</div>
+          <div class="day-title-text">Palma · Departure</div>
+        </div>
+        <p style="font-size:13.5px; color:var(--gray); margin-bottom:1rem; line-height:1.7;">Slow final morning, long lunch in Palma, then departure. Late breakfast, final swim from the rope ladder, and time on the terrace before checkout. Luggage held by the hotel before transfer into Palma.</p>
+        <div class="itinerary-events">
+          <div class="itinerary-event">
+            <div class="event-time">Morning</div>
+            <div class="event-content">
+              <div class="event-title">Final Morning at Cap Rocat</div>
+              <div class="event-detail">Breakfast at the hotel terrace or in-suite. Free morning at Cap Rocat. Private transfer into Palma de Mallorca.</div>
+              <span class="event-tag tag-transfer">Transfer</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Midday</div>
+            <div class="event-content">
+              <div class="event-title">Long Lunch — Marc Fosh</div>
+              <div class="event-detail">Long lunch at Marc Fosh, one Michelin star, focused on seasonal Balearic produce.</div>
+              <span class="event-tag tag-dining">Dining</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Afternoon</div>
+            <div class="event-content">
+              <div class="event-title">Departure</div>
+              <div class="event-detail">Private transfer to PMI for departure.</div>
+              <span class="event-tag tag-transfer">Transfer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Experience</strong></p>
+
+      <div style="margin-bottom:1.5rem;">
+        <a href="#" class="btn-dark" style="margin:0; justify-content:center; text-align:center;">→ Mallorca Full Itinerary</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ TASK 03 ══ -->
+  <section class="task-section" id="task3">
+    <div class="task-header">
+      <div class="task-number">03</div>
+      <div class="task-title-block">
+        <h2 class="task-title">Online Survey</h2>
+        <div class="task-subtitle">Microsoft Forms + Power Automate — 150 to 200 Respondents</div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="callout" style="margin-bottom:1.5rem;">
+        <div class="callout-label">Recommendation</div>
+        <p>The recommended platform is Microsoft Forms, which integrates natively with the M365 ecosystem and lets board members respond without creating an account or logging in. Each submission triggers an automated workflow that generates a clean, one-page PDF summary of the full response and delivers it by email, eliminating any manual export or formatting work.</p>
+      </div>
+
+      <div class="step-block">
+        <div class="step-label">Tool Stack</div>
+        <div class="step-text"><strong>Microsoft Forms</strong> (collection) → <strong>Word template on OneDrive</strong> (one-page response layout) → <strong>Power Automate</strong> (populate template, convert to PDF, send email) → <strong>Outlook</strong> (internal email delivery)</div>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">How the Workflow Runs</strong></p>
+
+      <div class="steps-list" style="margin-bottom:1.5rem;">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>Collection — Microsoft Forms</strong>
+            <p>Respondent submits via a shared form link. No account or login required. Responses are captured instantly and stored in the connected M365 environment.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>Layout — Word Template on OneDrive</strong>
+            <p>Each answer is mapped into a structured Word template stored in OneDrive, producing a consistent one-page "Survey Response" layout per submission.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>Automation — Power Automate</strong>
+            <p>Power Automate converts the completed template to PDF and emails it to the designated internal recipient inbox on a per-response basis. Summaries arrive within minutes of completion and are easy to forward or archive.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>Delivery — Outlook</strong>
+            <p>PDF summary lands in the designated inbox. For teams that prefer less frequent notifications, the workflow can be configured to send consolidated summaries weekly or every two weeks instead of in real time.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Other Viable Survey &amp; Automation Stacks</strong></p>
+
+      <div style="margin-bottom:1.5rem;">
+        <div class="doc-row">
+          <div class="doc-tag-col">
+            <span class="time-tag">SurveyMonkey</span>
+          </div>
+          <div class="doc-content">Dedicated survey platform with strong reporting and branching logic. Requires an additional vendor relationship and data sits outside the M365 environment.</div>
+        </div>
+        <div class="doc-row">
+          <div class="doc-tag-col">
+            <span class="time-tag">Google Workspace</span>
+          </div>
+          <div class="doc-content">Forms, Studio, and Apps Script can replicate a similar collection and automation workflow. Not a fit if the firm is M365-only and wants to avoid cross-platform data handling.</div>
+        </div>
+        <div class="doc-row">
+          <div class="doc-tag-col">
+            <span class="time-tag">Zapier / Make</span>
+          </div>
+          <div class="doc-content">Automation platforms (Zapier and Make / Integromat) can connect almost any survey tool to any delivery method. Adds a third-party dependency outside the existing tenant.</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:1.5rem;">
+        <div style="margin-bottom:0.75rem;">
+          <div class="day-pill" style="display:inline-block; margin-bottom:0.5rem;">Why Microsoft Forms</div>
+          <div class="day-title-text">The Case for Owl Capital</div>
+        </div>
+        <p style="font-size:14px; line-height:1.75; color:#000000;">The survey is intended to run fully inside the existing Microsoft 365 environment, which makes Microsoft Forms and Power Automate the most natural fit. This stack minimizes additional vendors and permissions, keeps data within the firm's tenant, and leverages tools the team already uses daily, while still delivering an automated, one-page PDF summary workflow that can be extended or maintained easily over time.</p>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Experience</strong></p>
+
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:1.5rem;">
+        <a href="#" class="btn-dark" style="margin:0; flex:1; min-width:160px; ">→ Online Survey</a>
+        <a href="#" class="btn-dark" style="margin:0; flex:1; min-width:160px; ">→ Process Workflow</a>
+        <a href="#" class="btn-dark" style="background:var(--burgundy); margin:0; flex:1; min-width:160px; ">&#9654; Watch Workflow Walkthrough</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ TASK 04 ══ -->
+  <section class="task-section" id="task4">
+    <div class="task-header">
+      <div class="task-number">04</div>
+      <div class="task-title-block">
+        <h2 class="task-title">Consolidating Outlook Contacts</h2>
+        <div class="task-subtitle">Multiple Lists, 1,000+ Contacts Each — No Duplicates</div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="callout" style="margin-bottom:1.5rem;">
+        <div class="callout-label">Approach</div>
+        <p>I would use PowerShell as a control tool, not as the consolidation tool itself. Its role is to scan the exported Outlook contacts, normalize the data, identify likely duplicates, and produce a review report. This gives me a reliable way to locate duplicate risk across a large contact list without touching the original Outlook data. The actual consolidation would happen in Excel, where I can manually validate each flagged group, preserve all useful contact details, and produce one clean master CSV for import back into Outlook.</p>
+      </div>
+
+      <div class="step-block">
+        <div class="step-label">Tool Stack</div>
+        <div class="step-text"><strong>Outlook</strong> (export) → <strong>Raw CSV Backup</strong> → <strong>PowerShell</strong> (duplicate detection) → <strong>Duplicate_Report.csv</strong> (reference only) → <strong>Excel Working File</strong> (full dataset) → <strong>Controlled Merge</strong> → <strong>Contacts_CLEAN.csv</strong> → <strong>Outlook</strong> (import)</div>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Process Flow</strong></p>
+
+      <div class="steps-list" style="margin-bottom:1rem;">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>Outlook Export</strong>
+            <p>Export the full contacts list from Outlook via File → Open &amp; Export → Import/Export → Export to a file → Comma Separated Values. This is the raw source, untouched.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>Raw CSV Backup</strong>
+            <p>Save a locked copy of the original export before any processing begins. This is the fallback if anything goes wrong downstream.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>PowerShell Duplicate Detection</strong>
+            <p>Run a PowerShell script to normalize name and email fields, flag likely duplicates based on matching criteria, and output a structured report. No records are modified at this stage.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>Duplicate_Report.csv — Reference Only</strong>
+            <p>Review the flagged groups. This file is for review only, no edits are made here. Each flagged group is assessed to confirm whether it's a true duplicate or a legitimate separate contact.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <strong>Excel Working File — Full Dataset</strong>
+            <p>Open the full export in Excel. Use the Duplicate Report as a reference to manually validate each flagged group, preserve all useful contact details, and consolidate confirmed duplicates into single clean records.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <strong>Controlled Merge</strong>
+            <p>Each confirmed contact is reviewed for completeness, including name, company, title, phone, mobile, email, notes, and category where available. Contacts without a verified email or phone are flagged for follow-up before inclusion.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">7</div>
+          <div class="step-content">
+            <strong>Contacts_CLEAN.csv</strong>
+            <p>Export the finalized dataset as a clean CSV, formatted and mapped to Outlook's import field schema. This is the only file that touches Outlook on re-import.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">8</div>
+          <div class="step-content">
+            <strong>Outlook Import</strong>
+            <p>Import via File → Open &amp; Export → Import/Export → Import from another program or file → Comma Separated Values → map fields → Import. Contacts populate in the default Contacts folder under their assigned category.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-bottom:1.5rem;">
+        <div style="margin-bottom:0.75rem;">
+          <div class="day-pill" style="display:inline-block; margin-bottom:0.5rem;">Note</div>
+          <div class="day-title-text">On Outlook Duplicate Behavior</div>
+        </div>
+        <p style="font-size:14px; line-height:1.75; color:#000000;">New Outlook may automatically hide exact or subset duplicates, but this process does not rely on hidden duplicate behavior. The full export is reviewed and consolidated before re-import.</p>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Experience</strong></p>
+
+      <div style="margin-bottom:1.5rem;">
+        <a href="#" class="btn-dark" style="margin:0; ">→ Process Workflow</a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer class="site-footer">
+  <div style="display:flex; flex-direction:row; align-items:center; justify-content:center; gap:0.75rem;">
+    <img src="data:image/png;base64,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" alt="Paola Corrales" style="width:64px; height:64px; border-radius:50%; object-fit:cover;">
+    <p style="font-family:'DM Sans', sans-serif; font-size:13px; font-weight:400; color:rgba(255,255,255,0.55); letter-spacing:0.04em; margin:0;">Paola Corrales</p>
+  </div>
+</footer>
+
+<script>
+  // Active nav on scroll
+  const sections = document.querySelectorAll('.task-section');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navItems.forEach(n => n.classList.remove('active'));
+        const id = entry.target.getAttribute('id');
+        const active = document.querySelector(`.nav-item[href="#${id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
