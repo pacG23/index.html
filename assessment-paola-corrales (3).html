@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interview Assignment — Paola Corrales</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --burgundy: #710000;
+    --burgundy-light: #710000;
+    --tan: #B3A188;
+    --tan-light: #cfc4b2;
+    --cream: #F7EDE1;
+    --cream-dark: #ede0d0;
+    --black: #000000;
+    --gray: #6b6b6b;
+    --gray-light: #e8e2d9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #ffffff;
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    background: #000000;
+    padding: 3rem 0 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--tan);
+  }
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+  .header-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 0.75rem;
+  }
+  .header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .header-meta {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .header-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* ── Nav ── */
+  .task-nav {
+    background: #fff;
+    border-bottom: 1px solid var(--gray-light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+  }
+  .nav-item {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--gray);
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .nav-item:hover { color: var(--burgundy); border-bottom-color: var(--tan); }
+  .nav-item.active { color: var(--burgundy); border-bottom-color: var(--burgundy); }
+
+  /* ── Main ── */
+  .main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2.5rem 5rem;
+  }
+
+  /* ── Task Section ── */
+  .task-section {
+    padding: 3.5rem 0 3rem;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .task-section:last-child { border-bottom: none; }
+
+  .task-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .task-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--tan);
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: -4px;
+  }
+  .task-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--burgundy);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .task-subtitle {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tan);
+  }
+
+  /* ── Content ── */
+  .content p {
+    margin-bottom: 1rem;
+    color: var(--black);
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  .content p:last-child { margin-bottom: 0; }
+
+  /* ── Step Block ── */
+  .step-block {
+    background: #fff;
+    border: 1px solid var(--gray-light);
+    border-left: 3px solid var(--burgundy);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .step-block:last-child { margin-bottom: 0; }
+  .step-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 0.4rem;
+  }
+  .step-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--black);
+  }
+
+  /* ── Day Grid ── */
+  .day-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 0.5rem;
+  }
+  .day-card {
+    background: #fff;
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .day-card-header {
+    background: var(--burgundy);
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .day-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--tan);
+  }
+  .day-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #fff;
+  }
+  .day-card-body { padding: 1.25rem; }
+  .day-card-body p { font-size: 13.5px; line-height: 1.7; color: var(--black); }
+  .day-card-body p + p { margin-top: 0.6rem; }
+  .day-card-body ul { padding-left: 0; list-style: none; }
+  .day-card-body ul li {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--black);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid var(--gray-light);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .day-card-body ul li:last-child { border-bottom: none; }
+  .time-tag {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    background: var(--cream);
+    border-radius: 3px;
+    padding: 2px 7px;
+    margin-bottom: 4px;
+    flex-shrink: 0;
+  }
+
+  /* ── Numbered Steps ── */
+  .steps-list { counter-reset: steps; }
+  .step-item {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
+  }
+  .step-item:last-child { margin-bottom: 0; }
+  .step-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--burgundy);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content strong {
+    font-weight: 500;
+    color: var(--burgundy);
+    display: block;
+    margin-bottom: 3px;
+    font-size: 14px;
+  }
+  .step-content p { font-size: 14px; line-height: 1.65; color: #000000; margin: 0; }
+
+  /* ── Table ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin-bottom: 1rem;
+  }
+  .data-table thead tr { background: var(--burgundy); color: #fff; }
+  .data-table thead th { padding: 10px 12px; text-align: left; font-weight: 500; }
+  .data-table tbody tr:nth-child(even) { background: var(--cream); }
+  .data-table tbody tr:nth-child(odd) { background: #fff; border-bottom: 1px solid var(--gray-light); }
+  .data-table tbody td { padding: 10px 12px; }
+  .data-table tbody tr:nth-child(even) td { color: var(--black); }
+  .data-table tbody tr:nth-child(odd) td { color: var(--black); }
+  .data-table tbody td:first-child { font-weight: 500; }
+
+  /* ── Info Box ── */
+  .info-box {
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .info-box-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 0.5rem;
+  }
+  .info-box p { font-size: 14px; line-height: 1.7; color: var(--black); margin: 0; }
+
+  /* ── Survey ── */
+  .survey-question {
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+  .survey-q-header {
+    background: var(--cream);
+    padding: 0.9rem 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .survey-q-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--burgundy);
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .survey-q-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+    line-height: 1.5;
+  }
+  .survey-q-type {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 3px;
+  }
+  .survey-q-body {
+    padding: 1rem 1.25rem 1rem 1.25rem;
+    background: #fff;
+  }
+  .survey-options { display: flex; flex-direction: column; gap: 8px; }
+  .survey-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13.5px;
+    color: var(--black);
+  }
+  .survey-radio {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 2px solid var(--tan);
+    flex-shrink: 0;
+  }
+  .survey-checkbox {
+    width: 16px; height: 16px;
+    border-radius: 3px;
+    border: 2px solid var(--tan);
+    flex-shrink: 0;
+  }
+  .survey-textarea {
+    width: 100%;
+    min-height: 70px;
+    border: 1px solid var(--gray-light);
+    border-radius: 5px;
+    padding: 10px 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px;
+    color: var(--gray);
+    background: #fafafa;
+    resize: vertical;
+  }
+  .survey-scale {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .scale-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  .scale-circle {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    border: 2px solid var(--gray-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    color: var(--gray);
+    cursor: pointer;
+  }
+  .scale-label { font-size: 10px; color: var(--gray); text-align: center; }
+
+  /* ── Permit Cards ── */
+  .permit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 1rem;
+  }
+  .permit-card {
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .permit-card-header {
+    background: var(--burgundy);
+    padding: 0.75rem 1.25rem;
+  }
+  .permit-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.25;
+  }
+  .permit-card-body { padding: 1rem 1.25rem; background: #fff; }
+  .permit-meta-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 3px;
+  }
+  .permit-meta-text {
+    font-size: 13px;
+    color: var(--black);
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+  .permit-cost {
+    display: inline-block;
+    background: var(--cream);
+    border-radius: 4px;
+    padding: 3px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--burgundy);
+    margin-bottom: 0.75rem;
+  }
+  @media (max-width: 640px) {
+    .permit-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── Doc Rows ── */
+  .doc-row {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--gray-light);
+    align-items: flex-start;
+  }
+  .doc-row:last-child { border-bottom: none; }
+  .doc-tag-col { width: 150px; flex-shrink: 0; padding-top: 2px; }
+  .doc-req { font-size: 11px; color: var(--gray); margin-top: 4px; }
+  .doc-content { flex: 1; font-size: 14px; line-height: 1.7; color: var(--black); }
+
+  /* ── Phase Label ── */
+  .phase-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--burgundy);
+    margin-bottom: 0.85rem;
+    line-height: 1.2;
+  }
+  .two-col-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+  @media (max-width: 640px) {
+    .two-col-content { grid-template-columns: 1fr; }
+  }
+
+  /* ── Divider ── */
+  .rule { height: 1px; background: var(--tan-light); margin: 1.75rem 0; }
+
+  /* ── Buttons ── */
+  .btn-dark {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-right: 10px;
+    margin-bottom: 8px;
+    transition: background 0.2s;
+  }
+  .btn-dark:hover { background: var(--burgundy); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--burgundy);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid var(--burgundy);
+    margin-right: 10px;
+    margin-bottom: 8px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { background: var(--burgundy); color: #fff; }
+
+  /* ── Note Tag ── */
+  .note-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: #fff8f0;
+    border: 1px solid #e8c99a;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #8a5a00;
+    margin-bottom: 1.25rem;
+  }
+  .note-dot { width: 7px; height: 7px; border-radius: 50%; background: #e09a30; }
+
+  /* ── Checklist ── */
+  .check-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.5rem; }
+  .check-item { display: flex; align-items: flex-start; gap: 10px; }
+  .check-item span { font-size: 14px; color: var(--black); line-height: 1.6; }
+  .check-item .sub { color: var(--gray); font-size: 13px; }
+
+  /* ── Contact Block ── */
+  .contact-block {
+    background: var(--cream);
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .contact-item .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gray); margin-bottom: 3px; font-weight: 500; }
+  .contact-item a { color: var(--burgundy); text-decoration: none; font-size: 13px; }
+  .contact-item p { font-size: 13px; }
+
+  /* ── Two-col grid ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* ── Callout ── */
+  .callout {
+    background: #000;
+    color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .callout-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--tan);
+    margin-bottom: 0.5rem;
+  }
+  .callout p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.85); margin: 0; }
+
+  /* ── Itinerary timeline ── */
+  .itinerary-day {
+    margin-bottom: 2rem;
+  }
+  .itinerary-day-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .day-pill {
+    background: var(--burgundy);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .day-title-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--burgundy);
+  }
+  .itinerary-events { display: flex; flex-direction: column; gap: 0; }
+  .itinerary-event {
+    display: flex;
+    gap: 1.25rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .itinerary-event:last-child { border-bottom: none; }
+  .event-time {
+    width: 70px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--burgundy);
+    letter-spacing: 0.04em;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+  .event-content { flex: 1; }
+  .event-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 2px;
+  }
+  .event-detail {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+  .event-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 3px;
+    padding: 2px 6px;
+    margin-top: 4px;
+  }
+  .tag-transfer { background: #f0f0f0; color: #555; }
+  .tag-lodging  { background: #f7eee1; color: #8a5a00; }
+  .tag-dining   { background: #f7e1e1; color: #710000; }
+  .tag-activity { background: #e1f0e8; color: #1a6b3a; }
+  .tag-note     { background: #e8eaf6; color: #3949ab; }
+
+  /* ── Contacts table ── */
+  .contacts-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin-bottom: 1rem;
+  }
+  .contacts-table thead tr { background: var(--burgundy); color: #fff; }
+  .contacts-table thead th { padding: 10px 12px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.04em; }
+  .contacts-table tbody tr { border-bottom: 1px solid var(--gray-light); }
+  .contacts-table tbody tr:last-child { border-bottom: none; }
+  .contacts-table tbody td { padding: 10px 12px; vertical-align: top; }
+  .contacts-table tbody td:first-child { font-weight: 500; color: var(--black); }
+  .contact-name { font-weight: 500; color: var(--black); font-size: 13.5px; }
+  .contact-org  { font-size: 12px; color: var(--gray); margin-top: 2px; }
+  .contact-email { font-size: 12.5px; color: var(--burgundy); }
+  .contact-phone { font-size: 12.5px; color: var(--gray); }
+
+  /* ── Footer ── */
+  .site-footer {
+    background: #000000;
+    padding: 1.75rem 2.5rem;
+    text-align: center;
+  }
+  .site-footer p { font-size: 12px; color: rgba(255,255,255,0.45); }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .day-grid { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .header-title { font-size: 30px; }
+    .nav-item { padding: 0.875rem 0.75rem; font-size: 11px; }
+    .header-meta { gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     HEADER
+══════════════════════════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-label">Mahler Private Staffing</div>
+    <h1 class="header-title">Assessment Exercise</h1>
+    <div class="header-meta">
+      <span>Prepared by: Paola Corrales</span>
+      <span>Submitted: Friday, May 8, 2026</span>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════
+     NAV
+══════════════════════════════ -->
+<nav class="task-nav">
+  <div class="nav-inner">
+    <a href="#task1" class="nav-item active">01 &nbsp;Parking Permits</a>
+    <a href="#task2" class="nav-item">02 &nbsp;Mallorca Itinerary</a>
+    <a href="#task3" class="nav-item">03 &nbsp;Online Survey</a>
+    <a href="#task4" class="nav-item">04 &nbsp;Outlook Contacts</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════
+     MAIN
+══════════════════════════════ -->
+<main class="main">
+
+  <!-- ══ TASK 01 ══ -->
+  <section class="task-section" id="task1">
+    <div class="task-header">
+      <div class="task-number">01</div>
+      <div class="task-title-block">
+        <h2 class="task-title">Palm Beach Parking Permits 2026</h2>
+        <div class="task-subtitle">Town of Palm Beach — Permit Types, Costs &amp; Application Process</div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="callout" style="margin-bottom:1.5rem;">
+        <div class="callout-label">Approach</div>
+        <p>Before beginning any application, I would confirm with the principal: the property address on the island (determines eligibility: RPP vs. PPP); the number of vehicles that need permits (maximum 2 per household); whether visitor hangtags are needed and for how many guests (up to 4 per RPP household); and any commercial or staff vehicles that may require a Parking Placard Permit. This prevents wasted effort and ensures the right permit type is applied for from the start.</p>
+      </div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Permit Types &amp; Costs</strong></p>
+
+      <div class="permit-grid">
+
+        <div class="permit-card">
+          <div class="permit-card-header">
+            <div class="permit-card-name">Resident Parking Permit (RPP)</div>
+          </div>
+          <div class="permit-card-body">
+            <div class="permit-meta-label">Who It's For</div>
+            <div class="permit-meta-text">Residents on qualifying street blocks</div>
+            <div class="permit-cost">$50 / vehicle</div>
+            <div class="permit-meta-label">Key Benefit</div>
+            <div class="permit-meta-text" style="margin-bottom:0;">Park on your designated block; up to 48 hrs</div>
+          </div>
+        </div>
+
+        <div class="permit-card">
+          <div class="permit-card-header">
+            <div class="permit-card-name">ParkMobile Parking Permit (PPP)</div>
+          </div>
+          <div class="permit-card-body">
+            <div class="permit-meta-label">Who It's For</div>
+            <div class="permit-meta-text">All Town residents</div>
+            <div class="permit-cost">$50 / vehicle</div>
+            <div class="permit-meta-label">Key Benefit</div>
+            <div class="permit-meta-text" style="margin-bottom:0;">2 free hours in any ParkMobile zone town-wide</div>
+          </div>
+        </div>
+
+        <div class="permit-card">
+          <div class="permit-card-header">
+            <div class="permit-card-name">RPP Visitor Hangtag</div>
+          </div>
+          <div class="permit-card-body">
+            <div class="permit-meta-label">Who It's For</div>
+            <div class="permit-meta-text">Guests of RPP-eligible residents</div>
+            <div class="permit-cost">$50 / hangtag</div>
+            <div class="permit-meta-label">Key Benefit</div>
+            <div class="permit-meta-text" style="margin-bottom:0;">Park on resident's RPP block; up to 4 per household</div>
+          </div>
+        </div>
+
+        <div class="permit-card">
+          <div class="permit-card-header">
+            <div class="permit-card-name">Parking Placard Permit</div>
+          </div>
+          <div class="permit-card-body">
+            <div class="permit-meta-label">Who It's For</div>
+            <div class="permit-meta-text">Employers / commercial users</div>
+            <div class="permit-cost">$165 / mo &nbsp;·&nbsp; $554 / 4 mo &nbsp;·&nbsp; $1,454 / yr</div>
+            <div class="permit-meta-label">Key Benefit</div>
+            <div class="permit-meta-text" style="margin-bottom:0;">Unlimited parking in designated commercial areas; waitlist may apply</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="step-block">
+        <div class="step-label">Key Rules</div>
+        <div class="step-text">Maximum of 2 permits per household for both RPP and PPP. All resident permits are valid through December 31, 2026. RPP residents may add PPP for an additional $50, or purchase PPP on its own.</div>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Documents to Gather Before Applying</strong></p>
+
+      <div style="margin-bottom:1.5rem;">
+        <div class="doc-row">
+          <div class="doc-tag-col">
+            <span class="time-tag">Proof of Residency</span>
+            <div class="doc-req">One required</div>
+          </div>
+          <div class="doc-content">Current utility bill; court-registered mortgage document, deed, condominium contract, or trust document; current Florida ID or Driver's License showing Town address; or current lease agreement (must include landlord's name and contact number). Note: hotels and short-term rentals under 12 months are not eligible.</div>
+        </div>
+        <div class="doc-row">
+          <div class="doc-tag-col">
+            <span class="time-tag">Vehicle Information</span>
+            <div class="doc-req">All required</div>
+          </div>
+          <div class="doc-content">Make and model; license plate number (vehicle does not need a Florida plate).</div>
+        </div>
+        <div class="doc-row">
+          <div class="doc-tag-col">
+            <span class="time-tag">Vehicle Document</span>
+            <div class="doc-req">One required</div>
+          </div>
+          <div class="doc-content">Car registration, insurance card, or rental contract.</div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">How to Apply — Online (Recommended)</strong></p>
+      <p>The Town uses the Gtechna parking permit portal, which launched for 2026 registrations on January 26, 2026.</p>
+
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>Create an account</strong>
+            <p>Navigate to the <a href="https://palmbeach.gtechna.net/permit-portal/" target="_blank" style="color:var(--burgundy);">Palm Beach Permit Portal</a>, click "Sign Up" in the top right. The system automatically determines your eligibility (RPP or PPP) based on your address.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>Register your vehicle</strong>
+            <p>Click "Add Permit," then "Add Vehicle," enter vehicle details, and upload your Vehicle Registration and Proof of Residency.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>Select your permit type</strong>
+            <p>RPP residents: location defaults to your block. PPP residents: select "Townwide ParkMobile Parking Permit" from the dropdown.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>Add visitor hangtags (optional — RPP residents only)</strong>
+            <p>Click "Add Permit," then "Add Vehicle," toggle "Is this a visitor vehicle?" to Yes. Use format: VIS + last 5 digits of your phone number + permit number (e.g., VIS434561).</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <strong>Pay and submit</strong>
+            <p>Click "Add Credit Card," enter card details, accept terms, and click "Buy." Your card is not charged until the application is approved. Confirmation arrives by email.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Resources</strong></p>
+
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:1.5rem;">
+        <a href="https://palmbeach.gtechna.net/permit-portal/" target="_blank" class="btn-dark" style="margin:0; flex:1; min-width:180px; justify-content:flex-start;">→ Apply Online</a>
+        <a href="https://www.townofpalmbeach.com/parking" target="_blank" class="btn-dark" style="margin:0; flex:1; min-width:180px; justify-content:flex-start;">→ Registration Instructions</a>
+        <a href="https://www.townofpalmbeach.com/parking" target="_blank" class="btn-dark" style="background:var(--burgundy); margin:0; flex:1; min-width:180px; justify-content:flex-start;">&#9654; Watch Step-by-Step Tutorial</a>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">In-Person Alternative</strong></p>
+      <p style="margin-bottom:1.5rem;">Applications can also be submitted in person at Town Hall. Bring all documents listed above. Staff will process on-site and issue the permit same day in most cases.</p>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Important Details</strong></p>
+
+      <div style="border: 1px solid var(--gray-light); border-radius: 6px; overflow: hidden; margin-bottom: 1.75rem;">
+        <div style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-light); font-size:14px; line-height:1.7; color:var(--black);">A credit card is required to complete your application, but payment will only be processed once your application is approved.</div>
+        <div style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--gray-light); font-size:14px; line-height:1.7; color:var(--black);">Approved permits will be confirmed via email.</div>
+        <div style="padding: 1rem 1.5rem; font-size:14px; line-height:1.7; color:var(--black);">We're here to help! If you are having issues, please fill out the <a href="https://www.townofpalmbeach.com/contact" target="_blank" style="color:var(--burgundy);">contact form</a>.</div>
+      </div>
+
+      <div style="background:var(--cream); border-radius:6px; padding:1.25rem 1.5rem;">
+        <div style="display:flex; gap:2.5rem; flex-wrap:wrap; padding-bottom:1rem; margin-bottom:1rem; border-bottom:1px solid var(--tan-light);">
+          <div>
+            <div style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); margin-bottom:5px;">Parking Services</div>
+            <div style="font-size:13px; color:var(--black);">(561) 838-5400</div>
+          </div>
+          <div>
+            <div style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); margin-bottom:5px;">Email</div>
+            <a href="mailto:parking@townofpalmbeach.com" style="font-size:13px; color:var(--burgundy); text-decoration:none;">parking@townofpalmbeach.com</a>
+          </div>
+          <div>
+            <div style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); margin-bottom:5px;">Town Hall Address</div>
+            <div style="font-size:13px; color:var(--black);">360 S. County Rd, Palm Beach, FL 33480</div>
+          </div>
+          <div>
+            <div style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); margin-bottom:5px;">Hours</div>
+            <div style="font-size:13px; color:var(--black);">Mon – Fri, 8:30 AM – 5:00 PM</div>
+          </div>
+        </div>
+        <div style="display:flex; gap:2.5rem; flex-wrap:wrap;">
+          <div>
+            <div style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); margin-bottom:5px;">Permit Program Questions</div>
+            <div style="font-size:13px; color:var(--black); margin-bottom:3px;">(561) 838-5400</div>
+            <a href="mailto:webinfo@townofpalmbeach.com" style="font-size:13px; color:var(--burgundy); text-decoration:none;">webinfo@townofpalmbeach.com</a>
+          </div>
+          <div>
+            <div style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); margin-bottom:5px;">Enforcement / Citations</div>
+            <div style="font-size:13px; color:var(--black);">(561) 227-7080</div>
+          </div>
+          <div>
+            <div style="font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gray); margin-bottom:5px;">Parking Placard (Commercial)</div>
+            <div style="font-size:13px; color:var(--black); margin-bottom:3px;">(561) 227-6334</div>
+            <a href="mailto:rmalek@townofpalmbeach.com" style="font-size:13px; color:var(--burgundy); text-decoration:none;">rmalek@townofpalmbeach.com</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ TASK 02 ══ -->
+  <section class="task-section" id="task2">
+    <div class="task-header">
+      <div class="task-number">02</div>
+      <div class="task-title-block">
+        <h2 class="task-title">Mallorca Itinerary</h2>
+        <div class="task-subtitle">10-Day Private Travel Plan — Dates, Transfers, Lodging &amp; Activities</div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="callout" style="margin-bottom:1.5rem;">
+        <div class="callout-label">Approach</div>
+        <p>Before confirming any bookings, I'd align with the principal on travel dates, preferred lodging style (hotel vs. private villa), group size, and whether a car and driver or self-drive is preferred. All hotels, restaurants, and activities below are confirmed operational for the 2026 season and can be held provisionally while preferences are finalized.</p>
+      </div>
+
+      <!-- Day 1 -->
+      <div class="itinerary-day">
+        <div class="itinerary-day-header">
+          <div class="day-pill">Day 1</div>
+          <div class="day-title-text">Arrival · Palma de Mallorca</div>
+        </div>
+        <div class="itinerary-events">
+          <div class="itinerary-event">
+            <div class="event-time">Arrival</div>
+            <div class="event-content">
+              <div class="event-title">PMI Airport — Private Transfer</div>
+              <div class="event-detail">Pre-arranged private car meets at arrivals. Drive time to Palma Old Town: approximately 20 minutes.</div>
+              <span class="event-tag tag-transfer">Transfer</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Check-in</div>
+            <div class="event-content">
+              <div class="event-title">Cap Rocat</div>
+              <div class="event-detail">Converted 19th-century military fortress on the Bay of Palma. 24 suites, private sea access, Michelin-recognized restaurant on-site. Confirmed open May–October 2026.</div>
+              <span class="event-tag tag-lodging">Lodging</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Evening</div>
+            <div class="event-content">
+              <div class="event-title">Dinner at Zaranda</div>
+              <div class="event-detail">Two Michelin stars. Located within the hotel. Book 8-course tasting menu at time of room reservation. Requires advance notice of dietary restrictions.</div>
+              <span class="event-tag tag-dining">Dining</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 2 -->
+      <div class="itinerary-day">
+        <div class="itinerary-day-header">
+          <div class="day-pill">Day 2</div>
+          <div class="day-title-text">Palma Old Town</div>
+        </div>
+        <div class="itinerary-events">
+          <div class="itinerary-event">
+            <div class="event-time">Morning</div>
+            <div class="event-content">
+              <div class="event-title">Palma Cathedral (La Seu) — Private Access Tour</div>
+              <div class="event-detail">Early entry before public opening arranged through hotel concierge. Guided by a licensed art historian. 90 minutes.</div>
+              <span class="event-tag tag-activity">Activity</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Midday</div>
+            <div class="event-content">
+              <div class="event-title">Lunch at Marc Fosh</div>
+              <div class="event-detail">One Michelin star. Focus on seasonal Balearic produce. Reserve 3-course lunch menu. Located inside Hotel Convent de la Missió, 5 minutes on foot from the Cathedral.</div>
+              <span class="event-tag tag-dining">Dining</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Afternoon</div>
+            <div class="event-content">
+              <div class="event-title">Bellver Castle &amp; Palma Harbour Walk</div>
+              <div class="event-detail">Gothic circular castle with panoramic bay views. Approximately 1.5 hours. Return to hotel along the Paseo Marítimo waterfront.</div>
+              <span class="event-tag tag-activity">Activity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 3 -->
+      <div class="itinerary-day">
+        <div class="itinerary-day-header">
+          <div class="day-pill">Day 3</div>
+          <div class="day-title-text">Tramuntana Mountains</div>
+        </div>
+        <div class="itinerary-events">
+          <div class="itinerary-event">
+            <div class="event-time">Full Day</div>
+            <div class="event-content">
+              <div class="event-title">UNESCO Serra de Tramuntana — Private Driver</div>
+              <div class="event-detail">Scenic route through Valldemossa, Deià, and Sóller. Stop at La Residencia (Deià) for lunch on the terrace. Return via the Sóller railway to Palma (vintage 1912 wooden train — book in advance).</div>
+              <span class="event-tag tag-activity">Activity</span>
+              <span class="event-tag tag-dining" style="margin-left:4px;">Dining</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Days 4-5 -->
+      <div class="itinerary-day">
+        <div class="itinerary-day-header">
+          <div class="day-pill">Days 4 – 5</div>
+          <div class="day-title-text">Northeast Coast · Cap de Formentor</div>
+        </div>
+        <div class="itinerary-events">
+          <div class="itinerary-event">
+            <div class="event-time">Day 4 AM</div>
+            <div class="event-content">
+              <div class="event-title">Transfer to Formentor Peninsula</div>
+              <div class="event-detail">Private car, approximately 1 hour 15 minutes from Palma. Note: the road to Cap de Formentor is restricted to shuttle service June–September; private vehicles permitted before 10 AM and after 7 PM.</div>
+              <span class="event-tag tag-transfer">Transfer</span>
+              <span class="event-tag tag-note" style="margin-left:4px;">Access Restriction</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Check-in</div>
+            <div class="event-content">
+              <div class="event-title">Hotel Formentor — A Royal Hideaway</div>
+              <div class="event-detail">Iconic 1929 property on a private pine-forested peninsula with its own beach. Fully renovated 2023. Book sea-view suite. Open April–October 2026.</div>
+              <span class="event-tag tag-lodging">Lodging</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Day 5</div>
+            <div class="event-content">
+              <div class="event-title">Private Sailing Charter — Pollença Bay</div>
+              <div class="event-detail">Half-day catamaran charter departing Pollença port. Includes snorkeling stop at Cala Figuera and lunch on board. Confirm 48 hours in advance; weather-dependent.</div>
+              <span class="event-tag tag-activity">Activity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Days 6-7 -->
+      <div class="itinerary-day">
+        <div class="itinerary-day-header">
+          <div class="day-pill">Days 6 – 7</div>
+          <div class="day-title-text">Southeast Coves · Santanyí</div>
+        </div>
+        <div class="itinerary-events">
+          <div class="itinerary-event">
+            <div class="event-time">Day 6</div>
+            <div class="event-content">
+              <div class="event-title">Transfer to Santanyí — Private Villa Option</div>
+              <div class="event-detail">Southeast coast offers the most secluded coves on the island (Cala Mondragó, Cala Llombards). Private villa rental available as an alternative to hotel if group size warrants. Recommend Es Carnatge for 4+ guests.</div>
+              <span class="event-tag tag-lodging">Lodging</span>
+              <span class="event-tag tag-note" style="margin-left:4px;">Option</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Day 7</div>
+            <div class="event-content">
+              <div class="event-title">Coves del Drac — Private After-Hours Visit</div>
+              <div class="event-detail">One of Europe's largest underground lake systems. After-hours private access available through the hotel. Classical concert on the lake included. Porto Cristo, 30 minutes north.</div>
+              <span class="event-tag tag-activity">Activity</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Days 8-9 -->
+      <div class="itinerary-day">
+        <div class="itinerary-day-header">
+          <div class="day-pill">Days 8 – 9</div>
+          <div class="day-title-text">Return to Palma · Leisure &amp; Spa</div>
+        </div>
+        <div class="itinerary-events">
+          <div class="itinerary-event">
+            <div class="event-time">Day 8</div>
+            <div class="event-content">
+              <div class="event-title">Transfer Back to Palma — Cap Rocat</div>
+              <div class="event-detail">Return to base property for final two nights. Full-day at leisure. Spa treatments to be pre-booked; 24-hour notice required for preferred therapist.</div>
+              <span class="event-tag tag-lodging">Lodging</span>
+            </div>
+          </div>
+          <div class="itinerary-event">
+            <div class="event-time">Day 9 Eve</div>
+            <div class="event-content">
+              <div class="event-title">Farewell Dinner — Es Fum (St. Regis Mardavall)</div>
+              <div class="event-detail">Two Michelin stars. 20-minute drive from Palma. Seasonal tasting menu. Private dining room available for parties of 6 or more. Reserve 2 weeks in advance minimum.</div>
+              <span class="event-tag tag-dining">Dining</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day 10 -->
+      <div class="itinerary-day">
+        <div class="itinerary-day-header">
+          <div class="day-pill">Day 10</div>
+          <div class="day-title-text">Departure</div>
+        </div>
+        <div class="itinerary-events">
+          <div class="itinerary-event">
+            <div class="event-time">Morning</div>
+            <div class="event-content">
+              <div class="event-title">Check-out &amp; Private Transfer to PMI</div>
+              <div class="event-detail">Hotel concierge coordinates luggage. Private car departs 3 hours before flight. Lounge access at PMI confirmed through hotel if needed.</div>
+              <span class="event-tag tag-transfer">Transfer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="callout">
+        <div class="callout-label">Operational Notes</div>
+        <p>All restaurant reservations require credit card guarantee. Cap de Formentor road restrictions are enforced June through September — all site visits must be timed accordingly. I would maintain a master confirmation tracker with booking references, cancellation deadlines, and vendor contact numbers for each element of the trip, shared with the principal 72 hours before departure.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TASK 03 ══ -->
+  <section class="task-section" id="task3">
+    <div class="task-header">
+      <div class="task-number">03</div>
+      <div class="task-title-block">
+        <h2 class="task-title">Online Survey</h2>
+        <div class="task-subtitle">Microsoft Forms + Power Automate — 150 to 200 Respondents</div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="callout" style="margin-bottom:1.5rem;">
+        <div class="callout-label">Recommendation</div>
+        <p>The recommended platform is Microsoft Forms, which integrates natively with the M365 ecosystem and lets board members respond without creating an account or logging in. Each submission triggers an automated workflow that generates a clean, one-page PDF summary of the full response and delivers it by email, eliminating any manual export or formatting work.</p>
+      </div>
+
+      <div class="step-block">
+        <div class="step-label">Tool Stack</div>
+        <div class="step-text"><strong>Microsoft Forms</strong> (collection) → <strong>Word template on OneDrive</strong> (one-page response layout) → <strong>Power Automate</strong> (populate template, convert to PDF, send email) → <strong>Outlook</strong> (internal email delivery)</div>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">How the Workflow Runs</strong></p>
+
+      <div class="steps-list" style="margin-bottom:1.5rem;">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>Collection — Microsoft Forms</strong>
+            <p>Respondent submits via a shared form link. No account or login required. Responses are captured instantly and stored in the connected M365 environment.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>Layout — Word Template on OneDrive</strong>
+            <p>Each answer is mapped into a structured Word template stored in OneDrive, producing a consistent one-page "Survey Response" layout per submission.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>Automation — Power Automate</strong>
+            <p>Power Automate converts the completed template to PDF and emails it to the designated internal recipient inbox on a per-response basis. Summaries arrive within minutes of completion and are easy to forward or archive.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>Delivery — Outlook</strong>
+            <p>PDF summary lands in the designated inbox. For teams that prefer less frequent notifications, the workflow can be configured to send consolidated summaries weekly or every two weeks instead of in real time.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-block">
+        <div class="step-label">Why Microsoft Forms for Owl Capital</div>
+        <div class="step-text">The survey is intended to run fully inside the existing Microsoft 365 environment, which makes Microsoft Forms and Power Automate the most natural fit. This stack minimizes additional vendors and permissions, keeps data within the firm's tenant, and leverages tools the team already uses daily — while still delivering an automated, one-page PDF summary workflow that can be extended or maintained easily over time.</div>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Experience</strong></p>
+
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:1.5rem;">
+        <a href="#" class="btn-dark" style="margin:0; flex:1; min-width:160px; justify-content:flex-start;">→ Online Survey</a>
+        <a href="#" class="btn-dark" style="margin:0; flex:1; min-width:160px; justify-content:flex-start;">→ Process Workflow</a>
+        <a href="#" class="btn-dark" style="background:var(--burgundy); margin:0; flex:1; min-width:160px; justify-content:flex-start;">&#9654; Watch Workflow Walkthrough</a>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Other Viable Survey &amp; Automation Stacks</strong></p>
+
+      <div style="margin-bottom:1.5rem;">
+        <div class="doc-row">
+          <div class="doc-tag-col">
+            <span class="time-tag">SurveyMonkey</span>
+          </div>
+          <div class="doc-content">Dedicated survey platform with strong reporting and branching logic. Requires an additional vendor relationship and data sits outside the M365 environment.</div>
+        </div>
+        <div class="doc-row">
+          <div class="doc-tag-col">
+            <span class="time-tag">Google Workspace</span>
+          </div>
+          <div class="doc-content">Forms, Studio, and Apps Script can replicate a similar collection and automation workflow. Not a fit if the firm is M365-only and wants to avoid cross-platform data handling.</div>
+        </div>
+        <div class="doc-row">
+          <div class="doc-tag-col">
+            <span class="time-tag">Zapier / Make</span>
+          </div>
+          <div class="doc-content">Automation platforms (Zapier and Make / Integromat) can connect almost any survey tool to any delivery method. Adds a third-party dependency outside the existing tenant.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  </section>
+
+  <!-- ══ TASK 04 ══ -->
+  <section class="task-section" id="task4">
+    <div class="task-header">
+      <div class="task-number">04</div>
+      <div class="task-title-block">
+        <h2 class="task-title">Outlook Contacts</h2>
+        <div class="task-subtitle">Contact Consolidation — PowerShell Detection + Excel Merge + Outlook Import</div>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="callout" style="margin-bottom:1.5rem;">
+        <div class="callout-label">Approach</div>
+        <p>I would use PowerShell as a control tool, not as the consolidation tool itself. Its role is to scan the exported Outlook contacts, normalize the data, identify likely duplicates, and produce a review report. This gives me a reliable way to locate duplicate risk across a large contact list without touching the original Outlook data. The actual consolidation would happen in Excel, where I can manually validate each flagged group, preserve all useful contact details, and produce one clean master CSV for import back into Outlook.</p>
+      </div>
+
+      <div class="step-block">
+        <div class="step-label">Tool Stack</div>
+        <div class="step-text"><strong>Outlook</strong> (export) → <strong>Raw CSV Backup</strong> → <strong>PowerShell</strong> (duplicate detection) → <strong>Duplicate_Report.csv</strong> (reference only) → <strong>Excel Working File</strong> (full dataset) → <strong>Controlled Merge</strong> → <strong>Contacts_CLEAN.csv</strong> → <strong>Outlook</strong> (import)</div>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Process Flow</strong></p>
+
+      <div class="steps-list" style="margin-bottom:1rem;">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>Outlook Export</strong>
+            <p>Export the full contacts list from Outlook via File → Open &amp; Export → Import/Export → Export to a file → Comma Separated Values. This is the raw source — untouched.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>Raw CSV Backup</strong>
+            <p>Save a locked copy of the original export before any processing begins. This is the fallback if anything goes wrong downstream.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>PowerShell Duplicate Detection</strong>
+            <p>New Outlook may automatically hide exact or subset duplicates, but this process does not rely on hidden duplicate behavior. The full export is reviewed and consolidated before re-import. Run a PowerShell script to normalize name and email fields, flag likely duplicates based on matching criteria, and output a structured report. No records are modified at this stage.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>Duplicate_Report.csv — Reference Only</strong>
+            <p>Review the flagged groups. This file is for review only — no edits are made here. Each flagged group is assessed to confirm whether it's a true duplicate or a legitimate separate contact.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <strong>Excel Working File — Full Dataset</strong>
+            <p>Open the full export in Excel. Use the Duplicate Report as a reference to manually validate each flagged group, preserve all useful contact details, and consolidate confirmed duplicates into single clean records.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <strong>Controlled Merge</strong>
+            <p>Each confirmed contact is reviewed for completeness, including name, company, title, phone, mobile, email, notes, and category where available. Contacts without a verified email or phone are flagged for follow-up before inclusion.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">7</div>
+          <div class="step-content">
+            <strong>Contacts_CLEAN.csv</strong>
+            <p>Export the finalized dataset as a clean CSV — formatted and mapped to Outlook's import field schema. This is the only file that touches Outlook on re-import.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">8</div>
+          <div class="step-content">
+            <strong>Outlook Import</strong>
+            <p>Import via File → Open &amp; Export → Import/Export → Import from another program or file → Comma Separated Values → map fields → Import. Contacts populate in the default Contacts folder under their assigned category.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <p><strong style="font-weight:500; color:var(--burgundy);">Experience</strong></p>
+
+      <div style="margin-bottom:1.5rem;">
+        <a href="#" class="btn-dark" style="margin:0; justify-content:flex-start;">→ Process Workflow</a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer class="site-footer">
+  <p>Paola Corrales &nbsp;·&nbsp; Assessment Exercise &nbsp;·&nbsp; Mahler Private Staffing &nbsp;·&nbsp; May 2026</p>
+</footer>
+
+<script>
+  // Active nav on scroll
+  const sections = document.querySelectorAll('.task-section');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navItems.forEach(n => n.classList.remove('active'));
+        const id = entry.target.getAttribute('id');
+        const active = document.querySelector(`.nav-item[href="#${id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
